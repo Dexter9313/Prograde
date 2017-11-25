@@ -1,5 +1,25 @@
 build:
     verbosity: detailed
+install:
+    ############################################################################
+    # All external dependencies are installed in C:\projects\deps
+    ############################################################################
+    - mkdir C:\projects\deps
+    - cd C:\projects\deps
+
+    ############################################################################
+      # Install GSL
+    ############################################################################
+    - set GSL_URL="ftp://ftp.gnu.org/gnu/gsl/gsl-2.4.tar.gz"
+    - appveyor DownloadFile %GSL_URL% -FileName gsl.tar.gz
+    - 7z e gsl.tar.gz  && 7z x gsl.tar
+    - set PATH=C:\projects\deps\gsl-2.4;%PATH%
+    - cd gsl-2.4
+    - ./configure
+    - make
+    - make install
+    - cd ..
+
 build_script:
     - mkdir build
     - cd build
