@@ -1,0 +1,8 @@
+build:
+    verbosity: detailed
+build_script:
+    - mkdir build
+    - cd build
+    - cmake ..
+    - cmake --build . --target prograde
+    - cmake --build . --target prograde_test
