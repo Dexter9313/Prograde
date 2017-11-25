@@ -21,10 +21,24 @@ script:
     - make clang-format
     - make clang-tidy
     - make doc
+    - mkdir prograde-$TRAVIS_OS_NAME-x86-64-$CXX/
+    - mv prograde prograde-$TRAVIS_OS_NAME-x86-64-$CXX/
+    - mv ../data prograde-$TRAVIS_OS_NAME-x86-64-$CXX/
+    - tar -zcvf prograde-$TRAVIS_TAG-$TRAVIS_OS_NAME-x86-64-$CXX.tar.gz prograde-$TRAVIS_OS_NAME-x86-64-$CXX/
+
+
 deploy:
-  provider: pages
-  local_dir: html/
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-  on:
-    branch: master
+    - provider: pages
+      local_dir: html/
+      skip_cleanup: true
+      github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+      on:
+          branch: master
+
+    - provider: releases
+      user: $GITHUB_USER
+      password: $GITHUB_PASSWORD
+      file: "prograde-$TRAVIS_TAG-$TRAVIS_OS_NAME-x86-64-$CXX.tar.gz"
+      skip_cleanup: true
+      on:
+          tags: true
