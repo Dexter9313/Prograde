@@ -10,10 +10,10 @@ install:
     ############################################################################
       # Install GSL
     ############################################################################
-    - set GSL_URL="ftp://ftp.gnu.org/gnu/gsl/gsl-2.4.tar.gz"
-    - call curl.exe -sS -o gsl.tar.gz %GSL_URL%
-    - 7z e gsl.tar.gz  && 7z x gsl.tar
-    - set PATH=C:\projects\deps\gsl-2.4;%PATH%
+    - set GSL_URL="https://netix.dl.sourceforge.net/project/gnu-scientific-library-windows/gsl-2.2.1_mingw-6.2.0.zip"
+    - call curl.exe -sS -o gsl.zip %GSL_URL%
+    - 7z x gsl.zip -oC:\projects\deps\gsl > nul
+    - set PATH=C:\projects\deps\gsl\gsl-2.2.1-static;%PATH%
 before_build:
     - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
     - cd C:\projects\prograde
