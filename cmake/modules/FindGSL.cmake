@@ -35,7 +35,7 @@ IF(WIN32)
 		$ENV{GSL_HOME}
 		$ENV{EXTERN_LIBS_DIR}/gsl
 		$ENV{EXTRA}
-		# "C:/home/jw/source2/gsl-1.8"
+		"C:/projects/deps/gsl/gsl-2.2.1-static"
 		)
 	FIND_PATH(GSL_INCLUDE_DIR
 		NAMES gsl/gsl_cdf.h gsl/gsl_randist.h
