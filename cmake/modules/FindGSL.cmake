@@ -35,7 +35,7 @@ IF(WIN32)
 		$ENV{GSL_HOME}
 		$ENV{EXTERN_LIBS_DIR}/gsl
 		$ENV{EXTRA}
-		"C:/projects/deps/gsl/gsl-2.2.1-static"
+		#"C:/projects/deps/gsl"
 		)
 	MESSAGE(STATUS "GSL_POSSIBLE_ROOT_DIRS : ${GSL_POSSIBLE_ROOT_DIRS}")
 	FIND_PATH(GSL_INCLUDE_DIR

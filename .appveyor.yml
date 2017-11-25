@@ -22,6 +22,6 @@ before_build:
 build_script:
     - mkdir build
     - cd build
-    - cmake ..
+    - cmake .. -DGSL_ROOT_DIR="C:\projects\deps\gsl"
     - cmake --build . --target prograde
     - cmake --build . --target prograde_test
