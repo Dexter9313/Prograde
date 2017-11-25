@@ -96,23 +96,19 @@ find_path( GSL_INCLUDE_DIR
 find_library( GSL_LIBRARY
   NAMES gsl
   HINTS ${GSL_ROOT_DIR}/lib ${GSL_LIBDIR}
-  PATH_SUFFIXES Release Debug
 )
 find_library( GSL_CBLAS_LIBRARY
   NAMES gslcblas cblas
   HINTS ${GSL_ROOT_DIR}/lib ${GSL_LIBDIR}
-  PATH_SUFFIXES Release Debug
 )
 # Do we also have debug versions?
 find_library( GSL_LIBRARY_DEBUG
   NAMES gsld gsl
   HINTS ${GSL_ROOT_DIR}/lib ${GSL_LIBDIR}
-  PATH_SUFFIXES Debug
 )
 find_library( GSL_CBLAS_LIBRARY_DEBUG
   NAMES gslcblasd cblasd gslcblas cblas
   HINTS ${GSL_ROOT_DIR}/lib ${GSL_LIBDIR}
-  PATH_SUFFIXES Debug
 )
 set( GSL_INCLUDE_DIRS ${GSL_INCLUDE_DIR} )
 set( GSL_LIBRARIES ${GSL_LIBRARY} ${GSL_CBLAS_LIBRARY} )
