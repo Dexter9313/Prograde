@@ -14,11 +14,6 @@ install:
     - call curl.exe -sS -o gsl.tar.gz %GSL_URL%
     - 7z e gsl.tar.gz  && 7z x gsl.tar
     - set PATH=C:\projects\deps\gsl-2.4;%PATH%
-    - cd gsl-2.4
-    - ./configure
-    - make
-    - make install
-    - cd ..
 
 build_script:
     - mkdir build
