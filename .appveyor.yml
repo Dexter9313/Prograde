@@ -11,7 +11,7 @@ install:
       # Install GSL
     ############################################################################
     - set GSL_URL="ftp://ftp.gnu.org/gnu/gsl/gsl-2.4.tar.gz"
-    - appveyor DownloadFile %GSL_URL% -FileName gsl.tar.gz
+    - call curl.exe -sS -o gsl.tar.gz %GSL_URL%
     - 7z e gsl.tar.gz  && 7z x gsl.tar
     - set PATH=C:\projects\deps\gsl-2.4;%PATH%
     - cd gsl-2.4
