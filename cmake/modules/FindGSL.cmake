@@ -37,6 +37,7 @@ IF(WIN32)
 		$ENV{EXTRA}
 		"C:/projects/deps/gsl/gsl-2.2.1-static"
 		)
+	MESSAGE(STATUS "GSL_POSSIBLE_ROOT_DIRS : ${GSL_POSSIBLE_ROOT_DIRS}")
 	FIND_PATH(GSL_INCLUDE_DIR
 		NAMES gsl/gsl_cdf.h gsl/gsl_randist.h
 		PATHS ${GSL_POSSIBLE_ROOT_DIRS}
