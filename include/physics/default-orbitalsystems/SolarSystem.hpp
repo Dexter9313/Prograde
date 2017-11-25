@@ -1,0 +1,46 @@
+/*
+    Copyright (C) 2015 Florian Cabot
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
+
+#ifndef SOLARSYSTEM_HPP
+#define SOLARSYSTEM_HPP
+
+#include "../OrbitalSystem.hpp"
+
+class SolarSystem : public OrbitalSystem
+{
+  public:
+	SolarSystem();
+
+  private:
+	void createPlanets();
+	void createEarthSubSystem();
+	void createMarsSubSystem();
+	void createJupiterSubSystem();
+	void createSaturnSubSystem();
+	void createUranusSubSystem();
+	void createNeptuneSubSystem();
+	void createPlutoSubSystem();
+
+	// to be corrected to true scale
+	// float au = 20.f;
+	// float radiusMultiplier = 0.0001f;
+	double au              = 149597870700;
+	float km = 1000;
+};
+
+#endif // SOLARSYSTEM_HPP

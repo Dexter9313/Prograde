@@ -1,0 +1,30 @@
+language: cpp
+compiler:
+    - gcc
+    - clang
+addons:
+    apt:
+        packages:
+            - libgsl0-dev
+            - libboost1.55-dev
+            - clang-3.8
+            - clang-format-3.8
+            - clang-tidy-3.8
+            - doxygen
+
+script:
+    - mkdir build
+    - cd build/
+    - cmake ..
+    - make -j 4 prograde prograde_test
+    - ./prograde_test
+    - make clang-format
+    - make clang-tidy
+    - make doc
+deploy:
+  provider: pages
+  local_dir: html/
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: master

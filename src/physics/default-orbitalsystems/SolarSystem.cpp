@@ -1,0 +1,214 @@
+/*
+    Copyright (C) 2015 Florian Cabot
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
+
+#include "../../../include/physics/default-orbitalsystems/SolarSystem.hpp"
+
+// float sunMass = 4.75177f;
+float sunMass   = 1.9891f * 1e30;
+float sunRadius = 696342.f * 1000;
+
+SolarSystem::SolarSystem()
+    : OrbitalSystem(sunMass, sunRadius)
+{
+	createPlanets();
+	createEarthSubSystem();
+	createMarsSubSystem();
+	createJupiterSubSystem();
+	createSaturnSubSystem();
+	createUranusSubSystem();
+	createNeptuneSubSystem();
+	createPlutoSubSystem();
+}
+
+void SolarSystem::createPlanets()
+{
+	Orbit::Parameters orbitalParams;
+	CelestialBody::Parameters physicalParams;
+
+	// mercury
+	orbitalParams.inclination            = M_PI * 7.005 / 180.f;
+	orbitalParams.ascendingNodeLongitude = M_PI * 48.331 / 180.f;
+	orbitalParams.periapsisArgument      = M_PI * 29.124 / 180.f;
+	orbitalParams.eccentricity           = 0.205630;
+	orbitalParams.semiMajorAxis          = 0.387098 * au;
+	orbitalParams.meanAnomalyAtEpoch     = M_PI * 174.796 / 180.f;
+	physicalParams.radius                = 2469.7 * km;
+	physicalParams.color                 = Color(100, 100, 100);
+	createChild("Mercury", orbitalParams, physicalParams);
+
+	// venus
+	orbitalParams.inclination            = M_PI * 3.39458 / 180.f;
+	orbitalParams.ascendingNodeLongitude = M_PI * 76.680 / 180.f;
+	orbitalParams.periapsisArgument      = M_PI * 54.884 / 180.f;
+	orbitalParams.eccentricity           = 0.006772;
+	orbitalParams.semiMajorAxis          = 0.723332 * au;
+	orbitalParams.meanAnomalyAtEpoch     = M_PI * 50.115 / 180.f;
+	physicalParams.radius                = 6051.8 * km;
+	physicalParams.color                 = Color(255, 255, 204);
+	createChild("Venus", orbitalParams, physicalParams);
+
+	// earth
+	orbitalParams.inclination            = M_PI * 0.00005f / 180.f;
+	orbitalParams.ascendingNodeLongitude = M_PI * -11.26064 / 180.f;
+	orbitalParams.periapsisArgument      = M_PI * 114.20783 / 180.f;
+	orbitalParams.eccentricity           = 0.0167086;
+	orbitalParams.semiMajorAxis          = 1.000001018 * au;
+	orbitalParams.meanAnomalyAtEpoch     = M_PI * 358.617 / 180.f;
+	physicalParams.radius                = 6371.0 * km;
+	physicalParams.color                 = Color(0, 204, 255);
+	physicalParams.mass                  = 5.97237 * 1e24;
+	createChild("Earth", orbitalParams, physicalParams);
+
+	// mars
+	orbitalParams.inclination            = M_PI * 1.850 / 180.f;
+	orbitalParams.ascendingNodeLongitude = M_PI * 49.558 / 180.f;
+	orbitalParams.periapsisArgument      = M_PI * 286.502 / 180.f;
+	orbitalParams.eccentricity           = 0.0934;
+	orbitalParams.semiMajorAxis          = 1.523679 * au;
+	orbitalParams.meanAnomalyAtEpoch     = M_PI * 19.373 / 180.f;
+	physicalParams.radius                = 3389.5 * km;
+	physicalParams.color                 = Color(204, 102, 51);
+	physicalParams.mass                  = 6.4171 * 1e23;
+	createChild("Mars", orbitalParams, physicalParams);
+	/*
+	*/
+	// jupiter
+	orbitalParams.inclination            = M_PI * 1.303 / 180.f;
+	orbitalParams.ascendingNodeLongitude = M_PI * 100.464 / 180.f;
+	orbitalParams.periapsisArgument      = M_PI * 273.867 / 180.f;
+	orbitalParams.eccentricity           = 0.048498;
+	orbitalParams.semiMajorAxis          = 5.20260 * au;
+	orbitalParams.meanAnomalyAtEpoch     = M_PI * 20.020 / 180.f;
+	physicalParams.radius                = 69911 * km;
+	physicalParams.color                 = Color(255, 204, 102);
+	createChild("Jupiter", orbitalParams, physicalParams);
+
+	// saturn
+	orbitalParams.inclination            = M_PI * 2.485240 / 180.f;
+	orbitalParams.ascendingNodeLongitude = M_PI * 113.665 / 180.f;
+	orbitalParams.periapsisArgument      = M_PI * 339.392 / 180.f;
+	orbitalParams.eccentricity           = 0.05555;
+	orbitalParams.semiMajorAxis          = 9.554909 * au;
+	orbitalParams.meanAnomalyAtEpoch     = M_PI * 317.020 / 180.f;
+	physicalParams.radius                = 58232 * km;
+	physicalParams.color                 = Color(255, 204, 80);
+	createChild("Saturn", orbitalParams, physicalParams);
+
+	// uranus
+	orbitalParams.inclination            = M_PI * 0.773 / 180.f;
+	orbitalParams.ascendingNodeLongitude = M_PI * 74.006 / 180.f;
+	orbitalParams.periapsisArgument      = M_PI * 96.998857 / 180.f;
+	orbitalParams.eccentricity           = 0.046381;
+	orbitalParams.semiMajorAxis          = 19.2184 * au;
+	orbitalParams.meanAnomalyAtEpoch     = M_PI * 142.238600 / 180.f;
+	physicalParams.radius                = 25362 * km;
+	physicalParams.color                 = Color(180, 180, 255);
+	createChild("Uranus", orbitalParams, physicalParams);
+
+	// neptune
+	orbitalParams.inclination            = M_PI * 1.767975 / 180.f;
+	orbitalParams.ascendingNodeLongitude = M_PI * 131.784 / 180.f;
+	orbitalParams.periapsisArgument      = M_PI * 276.336 / 180.f;
+	orbitalParams.eccentricity           = 0.009456;
+	orbitalParams.semiMajorAxis          = 30.110387 * au;
+	orbitalParams.meanAnomalyAtEpoch     = M_PI * 256.228 / 180.f;
+	physicalParams.radius                = 24622 * km;
+	physicalParams.color                 = Color(80, 51, 255);
+	createChild("Neptune", orbitalParams, physicalParams);
+
+	// pluton
+	orbitalParams.inclination            = M_PI * 17.1405 / 180.f;
+	orbitalParams.ascendingNodeLongitude = M_PI * 110.299 / 180.f;
+	orbitalParams.periapsisArgument      = M_PI * 113.834 / 180.f;
+	orbitalParams.eccentricity           = 0.24905;
+	orbitalParams.semiMajorAxis          = 39.54 * au;
+	orbitalParams.meanAnomalyAtEpoch     = M_PI * 14.53 / 180.f;
+	physicalParams.radius                = 1187 * km;
+	physicalParams.color                 = Color(178, 145, 67);
+	createChild("Pluto", orbitalParams, physicalParams);
+}
+
+void SolarSystem::createEarthSubSystem()
+{
+	Orbit::Parameters orbitalParams;
+	CelestialBody::Parameters physicalParams;
+
+	// moon
+	orbitalParams.inclination            = M_PI * 5.145 / 180.f;
+	orbitalParams.ascendingNodeLongitude = M_PI * -11.3 / 180.f;
+	orbitalParams.periapsisArgument      = M_PI * 114.2 / 180.f;
+	orbitalParams.eccentricity           = 0.0549;
+	orbitalParams.semiMajorAxis          = 0.00257 * au;
+	orbitalParams.meanAnomalyAtEpoch     = M_PI * 358.6 / 180.f;
+	physicalParams.radius                = 1737.1 * km;
+	physicalParams.color                 = Color(100, 100, 100);
+	createChild("Moon", orbitalParams, physicalParams, "Earth");
+}
+
+void SolarSystem::createMarsSubSystem()
+{
+	Orbit::Parameters orbitalParams;
+	CelestialBody::Parameters physicalParams;
+
+	// phobos
+	orbitalParams.inclination            = M_PI * 26.04 / 180.f;
+	orbitalParams.ascendingNodeLongitude = M_PI * 0 / 180.f;
+	orbitalParams.periapsisArgument      = M_PI * 0 / 180.f;
+	orbitalParams.eccentricity           = 0.0151;
+	orbitalParams.semiMajorAxis          = 0.00057 * au;
+	orbitalParams.meanAnomalyAtEpoch     = M_PI * 358.6 / 180.f;
+	physicalParams.radius                = 11.2667 * km;
+	physicalParams.color                 = Color(100, 100, 100);
+	createChild("Phobos", orbitalParams, physicalParams, "Mars");
+
+	// deimos
+	orbitalParams.inclination            = M_PI * 27.58 / 180.f;
+	orbitalParams.ascendingNodeLongitude = M_PI * 0 / 180.f;
+	orbitalParams.periapsisArgument      = M_PI * 0 / 180.f;
+	orbitalParams.eccentricity           = 0.00033;
+	orbitalParams.semiMajorAxis          = 0.00207 * au;
+	orbitalParams.meanAnomalyAtEpoch     = M_PI * 358.6 / 180.f;
+	physicalParams.radius                = 6.2 * km;
+	physicalParams.color                 = Color(170, 150, 150);
+	createChild("Deimos", orbitalParams, physicalParams, "Mars");
+}
+
+void SolarSystem::createJupiterSubSystem()
+{
+	/* content */
+}
+
+void SolarSystem::createSaturnSubSystem()
+{
+	/* content */
+}
+
+void SolarSystem::createUranusSubSystem()
+{
+	/* content */
+}
+
+void SolarSystem::createNeptuneSubSystem()
+{
+	/* content */
+}
+
+void SolarSystem::createPlutoSubSystem()
+{
+	/* content */
+}
