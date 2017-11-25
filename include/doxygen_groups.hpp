@@ -19,7 +19,7 @@
  *  The C++ Standard Library is always considered authorized.
  *
  * For this module, these libraries are :
- *  - GNU Scientific Library
+ *  - Boost Math
  *
  *  Any other library usage within this module will have to be discussed in an
  * issue and properly documented if accepted.

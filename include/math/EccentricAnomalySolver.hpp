@@ -20,11 +20,9 @@
 #define ECCENTRICANOMALYSOLVER_H
 
 #include <array>
-
-#include <gsl/gsl_errno.h>
-#include <gsl/gsl_math.h>
-#include <gsl/gsl_poly.h>
-#include <gsl/gsl_roots.h>
+#include <tuple>
+#include <limits>
+#include <boost/math/tools/roots.hpp>
 
 #include "constants.hpp"
 
@@ -47,7 +45,6 @@ class EccentricAnomalySolver
 
   private:
 	EccentricAnomalySolver() = delete;
-	static double findRoot(gsl_function_fdf FDF, void* parameters, double x);
 };
 
 #endif // ECCENTRICANOMALYSOLVER_H

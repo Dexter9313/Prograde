@@ -84,6 +84,8 @@ double Orbit::getMeanAnomalyAtUT(UniversalTime uT) const
 
 	double smaCubed = parameters.semiMajorAxis * parameters.semiMajorAxis
 	                  * parameters.semiMajorAxis;
+	if(parameters.eccentricity > 1)
+		smaCubed *= -1;
 	double n(sqrt(constant::G * massiveBodyMass / smaCubed));
 	return (n * equivUT) + parameters.meanAnomalyAtEpoch;
 }
