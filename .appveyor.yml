@@ -14,7 +14,7 @@ install:
     - call curl.exe -sS -o gsl.zip %GSL_URL%
     - 7z x gsl.zip -oC:\projects\deps\gsl > nul
     - set PATH=C:\projects\deps\gsl\gsl-2.2.1-static;%PATH%
-    - cd C:\projects\deps\gsl\gsl-2.2.1-static
+    - cd C:\projects\deps\gsl
     - cd C:\projects\deps
 before_build:
     - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
