@@ -1,0 +1,3 @@
+<technique vs="FarCelestialBody" ps="FarCelestialBody" psdefines="DIFFMAP">
+    <pass name="base" />
+</technique>
