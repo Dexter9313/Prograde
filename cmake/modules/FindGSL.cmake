@@ -57,8 +57,6 @@
 #  GSL_LIBRARY_DEBUG       - Location of the debug GSL library (if any).
 #
 
-include(${CMAKE_CURRENT_LIST_DIR}/FindPackageHandleStandardArgs.cmake)
-
 #=============================================================================
 # If the user has provided ``GSL_ROOT_DIR``, use it!  Choose items found
 # at this location over system locations.
