@@ -25,6 +25,7 @@ if( WIN32 AND NOT CYGWIN AND NOT MSYS )
   find_path( GSL_INCLUDE_DIR
     NAMES gsl/gsl_cdf.h gsl/gsl_randist.h
     )
+  message(STATUS "GSL_INCLUDE_DIR = ${GSL_INCLUDE_DIR}")
   if( GSL_INCLUDE_DIR )
     # look for gsl library
     find_library( GSL_LIBRARY
