@@ -68,7 +68,7 @@ void MainWindow::Start()
 	systemScene = new Urho3D::Scene(context_);
 	systemScene->CreateComponent<Urho3D::Octree>();
 	SkyboxGenerator::loadSkyboxFromEquatorialData(systemScene, 1500,
-	                                              23.4392811 * M_PI / 180.f);
+	                                              23.4392811 * Urho3D::M_PI / 180.f);
 	// SkyboxGenerator::loadSkybox(systemScene, 1024);
 	// SkyboxGenerator::createRandomUniformSkybox(systemScene, 1024);
 	// SkyboxGenerator::createRandomGalacticSkybox(systemScene, 1024);
