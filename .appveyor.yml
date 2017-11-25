@@ -14,7 +14,9 @@ install:
     - call curl.exe -sS -o gsl.tar.gz %GSL_URL%
     - 7z e gsl.tar.gz  && 7z x gsl.tar
     - set PATH=C:\projects\deps\gsl-2.4;%PATH%
-
+before_build:
+    - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
+    - cd C:\projects\prograde
 build_script:
     - mkdir build
     - cd build
