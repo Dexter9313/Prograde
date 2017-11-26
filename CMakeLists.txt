@@ -61,7 +61,7 @@ set(EXT_PROJECT_DIR ${PROJECT_SOURCE_DIR}/ext)
 	#URHO3D
 	if(NOT DEFINED URHO3D_LIBRARIES or NOT DEFINED URHO3D_INCLUDE_DIR)
 		add_subdirectory(${EXT_PROJECT_DIR}/urho3d)
-	endif
+	endif()
 	#set(URHO3D_LIBRARIES /home/florian/programmes/Urho3D/build/lib/libUrho3D.a)
 	#set(URHO3D_INCLUDE_DIR /home/florian/programmes/Urho3D/Source/Urho3D/ /home/florian/programmes/Urho3D/Source/ThirdParty)
 
