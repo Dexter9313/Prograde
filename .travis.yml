@@ -8,7 +8,7 @@ addons:
             - libboost1.55-dev
             - clang-3.8
             - clang-format-3.8
-            - clang-tidy-3.8
+            #- clang-tidy-3.8
             - doxygen
 cache:
       directories:
@@ -21,7 +21,7 @@ script:
     - make -j 4 prograde prograde_test
     - ./prograde_test
     - make clang-format
-    - make clang-tidy
+    #- make clang-tidy
     - make doc
     - mkdir prograde-$TRAVIS_OS_NAME-x86-64-$CXX/
     - mv prograde prograde-$TRAVIS_OS_NAME-x86-64-$CXX/
