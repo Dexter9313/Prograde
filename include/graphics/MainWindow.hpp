@@ -43,6 +43,7 @@
 #include "drawers/CelestialBodyDrawer.hpp"
 #include "drawers/OrbitalSystemDrawer.hpp"
 #include "physics/SimulationTime.hpp"
+#include "math/constants.hpp"
 
 class MainWindow : public Urho3D::Application
 {

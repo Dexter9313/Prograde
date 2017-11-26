@@ -19,9 +19,7 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#include <gsl/gsl_const.h>
-#include <gsl/gsl_math.h>
-#include <gsl/gsl_nan.h>
+#include <boost/math/constants/constants.hpp>
 
 /*! \ingroup math
  * Contains all mathematical and physical constants
@@ -30,17 +28,17 @@ namespace constant
 {
 /*! [Pi](https://en.wikipedia.org/wiki/Pi)
  */
-static const double pi = M_PI;
+static const double pi = boost::math::constants::pi<double>();
 
 /*! [Gravitationnal
  * constant](https://en.wikipedia.org/wiki/Gravitational_constant)
  */
-static const double G = GSL_CONST_MKSA_GRAVITATIONAL_CONSTANT;
+static const double G = 6.67408e-11;
 
 /*! [Not a number](https://en.wikipedia.org/wiki/NaN), result of invalid
  * mathematical operations
  */
-static const double NaN = GSL_NAN;
+static const double NaN = nan("");
 }
 
 #endif // CONSTANTS_H

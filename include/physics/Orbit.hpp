@@ -38,7 +38,7 @@ class Orbit
 		float ascendingNodeLongitude;
 		float periapsisArgument;
 		float eccentricity;
-		float semiMajorAxis; // or Specific Angular Momentum if parabolic orbit
+		float semiMajorAxis; // or altitude of periapsis if parabolic orbit
 		float meanAnomalyAtEpoch;
 	};
 

@@ -5,21 +5,23 @@ compiler:
 addons:
     apt:
         packages:
-            - libgsl0-dev
             - libboost1.55-dev
             - clang-3.8
             - clang-format-3.8
-            - clang-tidy-3.8
+            #- clang-tidy-3.8
             - doxygen
+cache:
+      directories:
+          - build/ext
 
 script:
-    - mkdir build
+    - mkdir -p build
     - cd build/
     - cmake ..
     - make -j 4 prograde prograde_test
     - ./prograde_test
     - make clang-format
-    - make clang-tidy
+    #- make clang-tidy
     - make doc
     - mkdir prograde-$TRAVIS_OS_NAME-x86-64-$CXX/
     - mv prograde prograde-$TRAVIS_OS_NAME-x86-64-$CXX/

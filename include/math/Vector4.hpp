@@ -20,8 +20,8 @@
 #define VECTOR4D_H
 
 #include <array>
-#include <gsl/gsl_math.h>
 #include <iostream>
+#include <cmath>
 
 #include "Vector3.hpp"
 #include "exceptions/Exceptions.hpp"
