@@ -26,4 +26,5 @@ build_script:
     - cd build
     - cmake .. -G "MinGW Makefiles" -DBOOST_ROOT="C:\Libraries\boost" -DURHO3D_LIBRARIES=%URHO3D_LIBRARIES% -DURHO3D_INCLUDE_DIR=%URHO3D_INCLUDE_DIR%
     - cmake --build . --target prograde
-    - cmake --build . --target prograde_test
+    #- cmake --build . --target prograde_test
+    - dir
