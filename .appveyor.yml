@@ -1,8 +1,11 @@
 build:
     verbosity: detailed
 build_script:
-    - mkdir build
-    - cd build
-    - cmake .. -DBOOST_ROOT="C:\Libraries\boost"
-    - cmake --build . --target prograde
-    - cmake --build . --target prograde_test
+    - git clone https://github.com/Urho3D/Urho3D.git
+    - cd Urho3D/
+    - cmake_vs2015.bat
+    #    - mkdir build
+    #    - cd build
+    #    - cmake .. -DBOOST_ROOT="C:\Libraries\boost"
+    #    - cmake --build . --target prograde
+    #    - cmake --build . --target prograde_test
