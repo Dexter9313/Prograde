@@ -19,6 +19,9 @@ install:
 
     # CMake refuses to generate MinGW Makefiles if sh.exe is in the Path
     - ps: Get-Command sh.exe -All | Remove-Item
+environment:
+    artifact_name: C:\projects\prograde\build\prograde-{appveyor_repo_tag_name}-windows-x86.64-mingw.zip
+
 before_build:
     - set Path=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin;%Path%
     - cd C:\projects\prograde
@@ -28,7 +31,7 @@ build_script:
     - cmake .. -G "MinGW Makefiles" -DBOOST_ROOT="C:\Libraries\boost" -DURHO3D_LIBRARIES=%URHO3D_LIBRARIES% -DURHO3D_INCLUDE_DIR=%URHO3D_INCLUDE_DIR%
     - cmake --build . --target prograde
     #- cmake --build . --target prograde_test
-    - set RELEASE_DIR_NAME=prograde-%APPVEYOR_REPO_TAG_NAME%-windows-x86.64-mingw
+    - set RELEASE_DIR_NAME=prograde-{appveyor_repo_tag_name}-windows-x86.64-mingw
     - set RELEASE_DIR=C:\projects\prograde\build\%RELEASE_DIR_NAME%
     - mkdir %RELEASE_DIR_NAME%
     - move prograde.exe %RELEASE_DIR%
@@ -45,7 +48,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: DjbFTzM0uFtr4OqH2hwHq79J85JX7pm0H1V8l16CyUUwEZ/UjfkZrtU/NWky/mP8
-    artifact: %RELEASE_DIR%\%RELEASE_DIR_NAME%.zip
+    artifact: {artifact_name}
   draft: false
   prerelease: false
   on:
