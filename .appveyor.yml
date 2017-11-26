@@ -23,6 +23,6 @@ before_build:
 build_script:
     - mkdir build
     - cd build
-    - cmake .. -DGSL_ROOT_DIR="C:/projects/deps/gsl/gsl-2.2.1_mingw-6.2.0/gsl-2.2.1-shared"
+    - cmake .. -DBOOST_ROOT="C:\Libraries\boost"
     - cmake --build . --target prograde
     - cmake --build . --target prograde_test
