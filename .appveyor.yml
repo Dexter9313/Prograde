@@ -5,6 +5,8 @@ build_script:
     - cd Urho3D/
     - mkdir build
     - cmake_vs2015.bat build/
+    - cd build/lib
+    - dir
     #    - mkdir build
     #    - cd build
     #    - cmake .. -DBOOST_ROOT="C:\Libraries\boost"
