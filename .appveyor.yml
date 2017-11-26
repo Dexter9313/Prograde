@@ -49,7 +49,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: DjbFTzM0uFtr4OqH2hwHq79J85JX7pm0H1V8l16CyUUwEZ/UjfkZrtU/NWky/mP8
-    artifact: {artifact_name}
+    artifact: build/prograde*.zip
   draft: false
   prerelease: false
   on:
