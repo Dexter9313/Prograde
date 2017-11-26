@@ -139,7 +139,7 @@ std::vector<SkyboxGenerator::Star> SkyboxGenerator::loadStars()
 
 	getline(ifs, buffer);
 
-	while(getline(ifs, buffer) != nullptr)
+	while(getline(ifs, buffer).good())
 	{
 		std::string::size_type currentPos(0);
 		std::string::size_type nextPos(0);
