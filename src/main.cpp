@@ -16,7 +16,7 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-#include "exceptions/Exceptions.hpp"
+//#include "exceptions/Exceptions.hpp"
 #include <iostream>
 
 #include "graphics/LauncherWindow.hpp"
@@ -24,7 +24,7 @@
 
 int main(int argc, char* argv[])
 {
-	BEGIN_EXCEPTIONS
+	//BEGIN_EXCEPTIONS
 
 	std::cout << "pname:" << Exceptions::getProgramName() << std::endl;
 
@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
 	delete copy; // save more memory
 
 	mWindow.Run();
-	END_EXCEPTIONS
+	//END_EXCEPTIONS
 
 	return 0;
 }
