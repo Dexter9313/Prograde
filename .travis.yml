@@ -15,7 +15,7 @@ cache:
           - build/ext
 
 script:
-    - mkdir build
+    - mkdir -p build
     - cd build/
     - cmake ..
     - make -j 4 prograde prograde_test

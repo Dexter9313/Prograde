@@ -50,7 +50,7 @@ double EccentricAnomalySolver::solveForParabolicOrbit(double meanAnomaly)
 double EccentricAnomalySolver::solveForHyperbolicOrbit(double meanAnomaly,
                                                        double eccentricity)
 {
-	double guess((eccentricity < 0.8 ? meanAnomaly : constant::pi));
+	double guess(constant::pi);
 	boost::uintmax_t maxit = 100;
 
 	return boost::math::tools::newton_raphson_iterate(

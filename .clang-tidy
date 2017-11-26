@@ -9,7 +9,7 @@ Checks:          "cert-dcl03-c, \
     cert-err61-cpp, \
     cert-fio38-c, \
     cert-oop11-cpp, \
-    #Slowing down build and not very useful
+    #Slowing down build and not very useful \
     #clang-analyzer-alpha.core.BoolAssignment, \
     #clang-analyzer-alpha.core.CallAndMessageUnInitRefArg, \
     #clang-analyzer-alpha.core.CastSize, \
