@@ -10,6 +10,9 @@ addons:
             - clang-format-3.8
             - clang-tidy-3.8
             - doxygen
+cache:
+      directories:
+          - build/ext
 
 script:
     - mkdir build
