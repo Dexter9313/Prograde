@@ -1,7 +1,7 @@
 build:
     verbosity: detailed
     parallel: true
-    project: prograde.sln
+    project: build/prograde.sln
 before_build:
     - mkdir build
     - cd build
