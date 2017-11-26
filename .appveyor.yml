@@ -21,7 +21,7 @@ install:
     - ps: Get-Command sh.exe -All | Remove-Item
 environment:
     artifact_name: C:\projects\prograde\build\prograde-{appveyor_repo_tag_name}-windows-x86.64-mingw.zip
-    tag_name: {appveyor_repo_tag_name}
+    tag_name: -{appveyor_repo_tag_name}-
 
 before_build:
     - set Path=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin;%Path%
@@ -32,7 +32,7 @@ build_script:
     - cmake .. -G "MinGW Makefiles" -DBOOST_ROOT="C:\Libraries\boost" -DURHO3D_LIBRARIES=%URHO3D_LIBRARIES% -DURHO3D_INCLUDE_DIR=%URHO3D_INCLUDE_DIR%
     - cmake --build . --target prograde
     #- cmake --build . --target prograde_test
-    - set RELEASE_DIR_NAME=prograde-%tag_name%-windows-x86.64-mingw
+    - set RELEASE_DIR_NAME=prograde%tag_name%windows-x86.64-mingw
     - set RELEASE_DIR=C:\projects\prograde\build\%RELEASE_DIR_NAME%
     - mkdir %RELEASE_DIR_NAME%
     - move prograde.exe %RELEASE_DIR%
