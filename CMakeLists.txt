@@ -33,10 +33,11 @@ endif()
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake/modules)
 
 find_package(Threads REQUIRED)
+find_package(Boost REQUIRED)
 find_package(OpenGL REQUIRED)
 
 #TODO put -fext-numeric-literals -lquadmath at right place
-set(EXTERNAL_LIBS_INCLUDE_DIRS ${GSL_INCLUDE_DIRS} ${GSLCBLAS_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIR})
+set(EXTERNAL_LIBS_INCLUDE_DIRS ${Boost_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIR})
 
 
 #FILES/DIRECTORIES
@@ -83,16 +84,14 @@ else()
 	    optimized ${GMOCK_LIBS_DIR}/ReleaseLibs/${CMAKE_FIND_LIBRARY_PREFIXES}gmock_main${CMAKE_FIND_LIBRARY_SUFFIXES}
 	)
 endif()
-#//target_link_libraries(${PROJECT_TEST_NAME} ${CMAKE_THREAD_LIBS_INIT} ${GSL_LIBRARIES} ${GSLCBLAS_LIBRARIES} ${IRRLICHT_LIBRARIES} ${OPENGL_LIBRARIES} ${X11_Xxf86vm_LIB} ${BULLET_LIBRARIES})
 #TODO put -fext-numeric-literals -lquadmath at right place
-target_link_libraries(${PROJECT_TEST_NAME} ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${GSL_LIBRARIES} ${GSLCBLAS_LIBRARIES} dl ${OPENGL_LIBRARIES} -lquadmath)
+target_link_libraries(${PROJECT_TEST_NAME} ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} dl ${OPENGL_LIBRARIES} -lquadmath)
 
 #EXECUTABLE 2 : FreeOrbiter
 add_executable(${PROJECT_NAME} ${MAIN_SRC_FILES})
 add_dependencies(${PROJECT_NAME} urho3d)
-#//target_link_libraries(${PROJECT_NAME} ${GSL_LIBRARIES} ${GSLCBLAS_LIBRARIES} ${IRRLICHT_LIBRARIES} ${OPENGL_LIBRARIES} ${X11_Xxf86vm_LIB} ${BULLET_LIBRARIES})
 #TODO put -fext-numeric-literals -lquadmath at right place
-target_link_libraries(${PROJECT_NAME} ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${GSL_LIBRARIES} ${GSLCBLAS_LIBRARIES} dl ${OPENGL_LIBRARIES} -lquadmath)
+target_link_libraries(${PROJECT_NAME} ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} dl ${OPENGL_LIBRARIES} -lquadmath)
 
 enable_testing ()
 add_test (NAME FreeorbiterTests COMMAND ${PROJECT_TEST_NAME})
