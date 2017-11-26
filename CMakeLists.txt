@@ -59,14 +59,26 @@ set(EXT_PROJECT_DIR ${PROJECT_SOURCE_DIR}/ext)
 	add_definitions(${MSVC_COMPILER_DEFS})
 
 	#URHO3D
-	add_subdirectory(${EXT_PROJECT_DIR}/urho3d)
-	#set(URHO3D_LIBRARIES /home/florian/programmes/Urho3D/build/lib/libUrho3D.a)
-	#set(URHO3D_INCLUDE_DIR /home/florian/programmes/Urho3D/Source/Urho3D/ /home/florian/programmes/Urho3D/Source/ThirdParty)
+	if( (NOT DEFINED URHO3D_LIBRARIES) OR (NOT DEFINED URHO3D_INCLUDE_DIR) )
+		add_subdirectory(${EXT_PROJECT_DIR}/urho3d)
+		MESSAGE(STATUS "Building URHO3D...")
+	else()
+		MESSAGE(STATUS "Using prebuilt URHO3D...")
+	endif()
+	MESSAGE(STATUS "Urho3D include dir : ${URHO3D_INCLUDE_DIR}")
+	MESSAGE(STATUS "Urho3D libraries : ${URHO3D_LIBRARIES}")
 
 #INCLUDE
 
 set(SYSTEM_INCLUDES ${EXTERNAL_LIBS_INCLUDE_DIRS} ${GOOGLE_TEST_INCLUDE_DIRS} ${URHO3D_INCLUDE_DIR})
 include_directories(${COMMON_INCLUDES} SYSTEM ${SYSTEM_INCLUDES})
+
+#LINKING SETUP
+if(WIN32)
+	set(LD_LIBS ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} ${OPENGL_LIBRARIES} -lquadmath)
+else()
+	set(LD_LIBS ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} -ldl ${OPENGL_LIBRARIES} -lquadmath)
+endif()
 
 #EXECUTABLE 1 : FreeOrbiter Test
 add_executable(${PROJECT_TEST_NAME} ${TEST_FILES})
@@ -85,13 +97,13 @@ else()
 	)
 endif()
 #TODO put -fext-numeric-literals -lquadmath at right place
-target_link_libraries(${PROJECT_TEST_NAME} ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} dl ${OPENGL_LIBRARIES} -lquadmath)
+target_link_libraries(${PROJECT_TEST_NAME} ${LD_LIBS})
 
 #EXECUTABLE 2 : FreeOrbiter
 add_executable(${PROJECT_NAME} ${MAIN_SRC_FILES})
 add_dependencies(${PROJECT_NAME} urho3d)
 #TODO put -fext-numeric-literals -lquadmath at right place
-target_link_libraries(${PROJECT_NAME} ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} dl ${OPENGL_LIBRARIES} -lquadmath)
+target_link_libraries(${PROJECT_NAME} ${LD_LIBS})
 
 enable_testing ()
 add_test (NAME FreeorbiterTests COMMAND ${PROJECT_TEST_NAME})

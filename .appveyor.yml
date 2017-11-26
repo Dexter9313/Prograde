@@ -1,8 +1,57 @@
 build:
     verbosity: detailed
+install:
+    ############################################################################
+    # All external dependencies are installed in C:\projects\deps
+    ############################################################################
+    - mkdir C:\projects\deps
+    - cd C:\projects\deps
+
+    ############################################################################
+    # Install Ninja
+    ############################################################################
+    - set URHO3D_URL="https://downloads.sourceforge.net/project/urho3d/Urho3D/1.6/Urho3D-1.6-Windows-64bit-SHARED.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Furho3d%2Ffiles%2FUrho3D%2F1.6%2F&ts=1511717087&use_mirror=iweb"
+    - appveyor DownloadFile %URHO3D_URL% -FileName urho3d.zip
+    - 7z x urho3d.zip -oC:\projects\deps\Urho3D > nul
+    - set URHO3D_PATH="C:/projects/deps/Urho3D/Urho3D-1.6-Windows-64bit-SHARED"
+    - set URHO3D_LIBRARIES=%URHO3D_PATH%/lib64/Urho3D/libUrho3D.dll.a
+    - set URHO3D_INCLUDE_DIR=%URHO3D_PATH%/include;%URHO3D_PATH%/include\Urho3D\ThirdParty
+
+    # CMake refuses to generate MinGW Makefiles if sh.exe is in the Path
+    - ps: Get-Command sh.exe -All | Remove-Item
+environment:
+    artifact_name: C:\projects\prograde\build\prograde-{appveyor_repo_tag_name}-windows-x86.64-mingw.zip
+    tag_name: -{appveyor_repo_tag_name}-
+
+before_build:
+    - set Path=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin;%Path%
+    - cd C:\projects\prograde
 build_script:
     - mkdir build
     - cd build
-    - cmake .. -DBOOST_ROOT="C:\Libraries\boost"
+    - cmake .. -G "MinGW Makefiles" -DBOOST_ROOT="C:\Libraries\boost" -DURHO3D_LIBRARIES=%URHO3D_LIBRARIES% -DURHO3D_INCLUDE_DIR=%URHO3D_INCLUDE_DIR%
     - cmake --build . --target prograde
-    - cmake --build . --target prograde_test
+    #- cmake --build . --target prograde_test
+    - set RELEASE_DIR_NAME=prograde%tag_name%windows-x86.64-mingw
+    - set RELEASE_DIR=C:\projects\prograde\build\%RELEASE_DIR_NAME%
+    - mkdir %RELEASE_DIR_NAME%
+    - move prograde.exe %RELEASE_DIR%
+    - move ../data %RELEASE_DIR%
+    - cd %URHO3D_PATH%/bin
+    - move Urho3D.dll %RELEASE_DIR%
+    - cd %RELEASE_DIR%
+    - dir
+    - cd ..
+    - dir
+    - 7z a -tzip %RELEASE_DIR_NAME%.zip %RELEASE_DIR%
+    - dir
+deploy:
+  provider: GitHub
+  auth_token:
+    secure: DjbFTzM0uFtr4OqH2hwHq79J85JX7pm0H1V8l16CyUUwEZ/UjfkZrtU/NWky/mP8
+    artifact: {artifact_name}
+  draft: false
+  prerelease: false
+  on:
+    branch: master                 # release from master branch only
+    appveyor_repo_tag: true        # deploy on tag push only
