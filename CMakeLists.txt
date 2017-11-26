@@ -90,13 +90,13 @@ else()
 	)
 endif()
 #TODO put -fext-numeric-literals -lquadmath at right place
-target_link_libraries(${PROJECT_TEST_NAME} ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} -libdl ${OPENGL_LIBRARIES} -lquadmath)
+target_link_libraries(${PROJECT_TEST_NAME} ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} -ldl ${OPENGL_LIBRARIES} -lquadmath)
 
 #EXECUTABLE 2 : FreeOrbiter
 add_executable(${PROJECT_NAME} ${MAIN_SRC_FILES})
 add_dependencies(${PROJECT_NAME} urho3d)
 #TODO put -fext-numeric-literals -lquadmath at right place
-target_link_libraries(${PROJECT_NAME} ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} -libdl ${OPENGL_LIBRARIES} -lquadmath)
+target_link_libraries(${PROJECT_NAME} ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} -ldl ${OPENGL_LIBRARIES} -lquadmath)
 
 enable_testing ()
 add_test (NAME FreeorbiterTests COMMAND ${PROJECT_TEST_NAME})
