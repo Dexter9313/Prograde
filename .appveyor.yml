@@ -45,11 +45,14 @@ build_script:
     - dir
     - 7z a -tzip %RELEASE_DIR_NAME%.zip %RELEASE_DIR%
     - dir
+artifacts:
+  - path: build\*.zip
+    name: zipfile
 deploy:
   provider: GitHub
   auth_token:
     secure: DjbFTzM0uFtr4OqH2hwHq79J85JX7pm0H1V8l16CyUUwEZ/UjfkZrtU/NWky/mP8
-  artifact: build\prograde-0.1-windows-x86.64-mingw.zip
+  artifact: zipfile
   on:
     branch: master                 # release from master branch only
     appveyor_repo_tag: true        # deploy on tag push only
