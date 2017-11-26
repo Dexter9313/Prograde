@@ -33,7 +33,6 @@ build_script:
     - move prograde.exe %RELEASE_DIR%
     - move ../data %RELEASE_DIR%
     - cd %URHO3D_PATH%/bin
-    - dir
-    #- move %URHO3D_PATH%/bin/Urho3D.dll %RELEASE_DIR%
+    - move Urho3D.dll %RELEASE_DIR%
     - cd %RELEASE_DIR%
     - dir
