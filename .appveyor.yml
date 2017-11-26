@@ -1,11 +1,12 @@
 build:
     verbosity: detailed
+    parallel: true
+    project: prograde.sln
+before_build:
+    - mkdir build
+    - cd build
+    - cmake .. -DBOOST_ROOT="C:\Libraries\boost" -G "Visual Studio 14"
+    - dir
 after_build:
     - cd ext\urho3d\urho3d-prefix\src\urho3d-build\lib\
     - dir
-build_script:
-    - mkdir build
-    - cd build
-    - cmake .. -DBOOST_ROOT="C:\Libraries\boost"
-    - cmake --build . --target prograde
-    - cmake --build . --target prograde_test
