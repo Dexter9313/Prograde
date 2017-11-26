@@ -5,7 +5,7 @@ build_script:
     - cd Urho3D/
     - mkdir build
     - cmake_vs2015.bat build/
-    - cd build/
+    - cd build/bin
     - dir
     #    - mkdir build
     #    - cd build
