@@ -23,7 +23,7 @@
 #include <iostream>
 #include <cmath>
 
-#include "exceptions/Exceptions.hpp"
+//#include "exceptions/Exceptions.hpp"
 
 /*! \ingroup math
  * Represents a tridimensional vector to be used for algebra and representation

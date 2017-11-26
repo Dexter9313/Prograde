@@ -60,8 +60,8 @@ void CoordinateSystem::setBase(Vector3 const& x0, Vector3 const& x1,
 
 Vector3 CoordinateSystem::operator[](unsigned int index) const
 {
-	if(index > 2)
-		CRITICAL("Index out of bounds.")
+	/*if(index > 2)
+	    CRITICAL("Index out of bounds.")*/
 	return Vector3(transform[0][index], transform[1][index],
 	               transform[2][index]);
 }

@@ -96,15 +96,15 @@ Vector4& Vector4::operator/=(double scalar)
 
 double& Vector4::operator[](unsigned int index)
 {
-	if(index > 3)
-		CRITICAL("Index out of bound.");
+	/*if(index > 3)
+	    CRITICAL("Index out of bound.");*/
 	return data[index];
 }
 
 double Vector4::operator[](unsigned int index) const
 {
-	if(index > 3)
-		CRITICAL("Index out of bound.");
+	/*if(index > 3)
+	    CRITICAL("Index out of bound.");*/
 	return data[index];
 }
 

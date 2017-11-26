@@ -24,9 +24,9 @@
 
 int main(int argc, char* argv[])
 {
-	//BEGIN_EXCEPTIONS
+	// BEGIN_EXCEPTIONS
 
-	std::cout << "pname:" << Exceptions::getProgramName() << std::endl;
+	// std::cout << "pname:" << Exceptions::getProgramName() << std::endl;
 
 	Urho3D::ParseArguments(argc, argv);
 	// Urho3D::SharedPtr<Urho3D::Context> context(new Urho3D::Context());
@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
 	delete copy; // save more memory
 
 	mWindow.Run();
-	//END_EXCEPTIONS
+	// END_EXCEPTIONS
 
 	return 0;
 }
