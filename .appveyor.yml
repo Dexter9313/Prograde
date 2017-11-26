@@ -24,7 +24,8 @@ environment:
     tag_name: "-0.1-"
 
 before_build:
-    - set Path=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin;%Path%
+    - set MINGW_BIN_DIR=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
+    - set Path=%MINGW_BIN_DIR%;%Path%
     - cd C:\projects\prograde
 build_script:
     - mkdir build
@@ -39,6 +40,8 @@ build_script:
     - move ../data %RELEASE_DIR%
     - cd %URHO3D_PATH%/bin
     - move Urho3D.dll %RELEASE_DIR%
+    - move %MINGW_BIN_DIR%\libgcc_s_seh-1.dll %RELEASE_DIR%
+    - move %MINGW_BIN_DIR%\libquadmath-0.dll %RELEASE_DIR%
     - cd %RELEASE_DIR%
     - dir
     - cd ..
