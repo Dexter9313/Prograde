@@ -27,6 +27,12 @@ ExternalProject_Add(urho3d
 # Specify MainTest's link libraries
 ExternalProject_Get_Property(urho3d binary_dir)
 #ExternalProject_Get_Property(urho3d source_dir)
-set(URHO3D_LIBRARIES ${binary_dir}/lib/libUrho3D.a PARENT_SCOPE)
+if(WIN32)
+	MESSAGE(STATUS "We are on Windows.")
+	set(URHO3D_LIBRARIES ${binary_dir}/lib/libUrho3D.lib PARENT_SCOPE)
+else(WIN32)
+	MESSAGE(STATUS "We are not on Windows.")
+	set(URHO3D_LIBRARIES ${binary_dir}/lib/libUrho3D.a PARENT_SCOPE)
+endif(WIN32)
 set(URHO3D_INCLUDE_DIR ${binary_dir}/include ${binary_dir}/include/Urho3D/ThirdParty PARENT_SCOPE)
 
