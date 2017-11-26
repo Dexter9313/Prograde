@@ -24,7 +24,6 @@
 #include <iostream>
 #include <map>
 #include <string>
-#include <sys/time.h>
 #include <vector>
 
 #include <Urho3D/Core/CoreEvents.h>
