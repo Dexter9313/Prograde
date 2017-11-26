@@ -28,7 +28,7 @@ ExternalProject_Add(urho3d
 ExternalProject_Get_Property(urho3d binary_dir)
 #ExternalProject_Get_Property(urho3d source_dir)
 if(WIN32)
-	set(URHO3D_LIBRARIES ${binary_dir}/lib/libUrho3D.a PARENT_SCOPE)
+	set(URHO3D_LIBRARIES ${binary_dir}/lib/libUrho3D.dll.a PARENT_SCOPE)
 else(WIN32)
 	set(URHO3D_LIBRARIES ${binary_dir}/lib/libUrho3D.a PARENT_SCOPE)
 endif(WIN32)
