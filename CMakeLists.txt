@@ -59,11 +59,14 @@ set(EXT_PROJECT_DIR ${PROJECT_SOURCE_DIR}/ext)
 	add_definitions(${MSVC_COMPILER_DEFS})
 
 	#URHO3D
-	if(NOT DEFINED URHO3D_LIBRARIES or NOT DEFINED URHO3D_INCLUDE_DIR)
+	if(NOT URHO3D_LIBRARIES or NOT URHO3D_INCLUDE_DIR)
 		add_subdirectory(${EXT_PROJECT_DIR}/urho3d)
+		MESSAGE(STATUS "Building URHO3D...")
+	else()
+		MESSAGE(STATUS "Using prebuilt URHO3D...")
 	endif()
-	#set(URHO3D_LIBRARIES /home/florian/programmes/Urho3D/build/lib/libUrho3D.a)
-	#set(URHO3D_INCLUDE_DIR /home/florian/programmes/Urho3D/Source/Urho3D/ /home/florian/programmes/Urho3D/Source/ThirdParty)
+	MESSAGE(STATUS "Urho3D libraries : ${URHO3D_LIBRARIES}")
+	MESSAGE(STATUS "Urho3D include dir : ${URHO3D_INCLUDE_DIR}")
 
 #INCLUDE
 
