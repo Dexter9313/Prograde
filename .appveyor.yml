@@ -21,7 +21,7 @@ install:
     - ps: Get-Command sh.exe -All | Remove-Item
 environment:
     artifact_name: C:\projects\prograde\build\prograde-$(APPVEYOR_REPO_TAG_NAME)-windows-x86.64-mingw.zip
-    tag_name: -$(APPVEYOR_REPO_TAG_NAME)-
+    tag_name: $(ENV:APPVEYOR_REPO_TAG_NAME)
 
 before_build:
     - set Path=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin;%Path%
