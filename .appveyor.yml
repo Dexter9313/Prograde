@@ -1,10 +1,11 @@
 build:
     verbosity: detailed
+after_build:
+    - cd ext\urho3d\urho3d-prefix\src\urho3d-build\lib\
+    - dir
 build_script:
     - mkdir build
     - cd build
     - cmake .. -DBOOST_ROOT="C:\Libraries\boost"
     - cmake --build . --target prograde
     - cmake --build . --target prograde_test
-    - cd ext\urho3d\urho3d-prefix\src\urho3d-build\lib\
-    - dir
