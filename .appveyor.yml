@@ -14,7 +14,7 @@ install:
     - appveyor DownloadFile %URHO3D_URL% -FileName urho3d.zip
     - 7z x urho3d.zip -oC:\projects\deps\Urho3D > nul
     - set URHO3D_LIBRARIES="C:\projects\deps\Urho3D\Urho3D-1.6-Windows-64bit-STATIC\lib64\Urho3D\libUrho3D.a"
-    - set URHO3D_INCLUDE_DIR="C:\projects\deps\Urho3D\Urho3D-1.6-Windows-64bit-STATIC\include"
+    - set URHO3D_INCLUDE_DIR="C:\projects\deps\Urho3D\Urho3D-1.6-Windows-64bit-STATIC\include;C:\projects\deps\Urho3D\Urho3D-1.6-Windows-64bit-STATIC\include\Urho3D\ThirdParty"
 before_build:
     - cd C:\projects\prograde
 build_script:
