@@ -38,5 +38,6 @@ build_script:
     - cd %RELEASE_DIR%
     - dir
     - cd ..
-    - 7z a -tzip %RELEASE_DIR_NAME% %RELEASE_DIR%
+    - dir
+    - 7z a -tzip %RELEASE_DIR_NAME%.zip %RELEASE_DIR%
     - dir
