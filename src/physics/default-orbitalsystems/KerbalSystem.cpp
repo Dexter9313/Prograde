@@ -37,9 +37,9 @@ void KerbalSystem::createPlanets()
 	CelestialBody::Parameters physicalParams;
 
 	// moho
-	orbitalParams.inclination            = M_PI * 7.0 / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 70.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 15.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 7.0 / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 70.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 15.f / 180.f;
 	orbitalParams.eccentricity           = 0.2;
 	orbitalParams.semiMajorAxis          = 5263138304 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 3.14;
@@ -48,9 +48,9 @@ void KerbalSystem::createPlanets()
 	createChild("Moho", orbitalParams, physicalParams);
 
 	// eve
-	orbitalParams.inclination            = M_PI * 2.1 / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 15.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 0.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 2.1 / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 15.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 0.f / 180.f;
 	orbitalParams.eccentricity           = 0.01;
 	orbitalParams.semiMajorAxis          = 9832684544 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 3.14;
@@ -60,9 +60,9 @@ void KerbalSystem::createPlanets()
 	createChild("Eve", orbitalParams, physicalParams);
 
 	// kerbin
-	orbitalParams.inclination            = M_PI * 0.f / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 0.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 0.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 0.f / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 0.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 0.f / 180.f;
 	orbitalParams.eccentricity           = 0.f;
 	orbitalParams.semiMajorAxis          = 13599840256 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 3.14;
@@ -72,9 +72,9 @@ void KerbalSystem::createPlanets()
 	createChild("Kerbin", orbitalParams, physicalParams);
 
 	// duna
-	orbitalParams.inclination            = M_PI * 0.06f / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 135.5f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 0.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 0.06f / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 135.5f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 0.f / 180.f;
 	orbitalParams.eccentricity           = 0.05f;
 	orbitalParams.semiMajorAxis          = 20726155264 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 3.14;
@@ -84,9 +84,9 @@ void KerbalSystem::createPlanets()
 	createChild("Duna", orbitalParams, physicalParams);
 
 	// dres
-	orbitalParams.inclination            = M_PI * 5.f / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 280.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 90.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 5.f / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 280.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 90.f / 180.f;
 	orbitalParams.eccentricity           = 0.14f;
 	orbitalParams.semiMajorAxis          = 40839348203 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 314;
@@ -95,9 +95,9 @@ void KerbalSystem::createPlanets()
 	createChild("Dres", orbitalParams, physicalParams);
 
 	// jool
-	orbitalParams.inclination            = M_PI * 1.304f / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 52.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 0.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 1.304f / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 52.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 0.f / 180.f;
 	orbitalParams.eccentricity           = 0.05f;
 	orbitalParams.semiMajorAxis          = 68773560320 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 0.1;
@@ -107,9 +107,9 @@ void KerbalSystem::createPlanets()
 	createChild("Jool", orbitalParams, physicalParams);
 
 	// eeloo
-	orbitalParams.inclination            = M_PI * 6.15f / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 50.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 260.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 6.15f / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 50.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 260.f / 180.f;
 	orbitalParams.eccentricity           = 0.26f;
 	orbitalParams.semiMajorAxis          = 90118820000 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 3.14;
@@ -124,9 +124,9 @@ void KerbalSystem::createEveSubSystem()
 	CelestialBody::Parameters physicalParams;
 
 	// gilly
-	orbitalParams.inclination            = M_PI * 12.f / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 80.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 10.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 12.f / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 80.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 10.f / 180.f;
 	orbitalParams.eccentricity           = 0.55f;
 	orbitalParams.semiMajorAxis          = 31500000 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 0.9;
@@ -141,9 +141,9 @@ void KerbalSystem::createKerbinSubSystem()
 	CelestialBody::Parameters physicalParams;
 
 	// mun
-	orbitalParams.inclination            = M_PI * 0.f / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 0.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 0.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 0.f / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 0.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 0.f / 180.f;
 	orbitalParams.eccentricity           = 0.f;
 	orbitalParams.semiMajorAxis          = 12000000 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 1.7;
@@ -152,9 +152,9 @@ void KerbalSystem::createKerbinSubSystem()
 	createChild("Mun", orbitalParams, physicalParams, "Kerbin");
 
 	// minmus
-	orbitalParams.inclination            = M_PI * 6.f / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 78.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 38.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 6.f / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 78.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 38.f / 180.f;
 	orbitalParams.eccentricity           = 0.f;
 	orbitalParams.semiMajorAxis          = 47000000 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 0.9;
@@ -169,9 +169,9 @@ void KerbalSystem::createDunaSubSystem()
 	CelestialBody::Parameters physicalParams;
 
 	// ike
-	orbitalParams.inclination            = M_PI * 0.2f / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 0.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 0.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 0.2f / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 0.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 0.f / 180.f;
 	orbitalParams.eccentricity           = 0.03f;
 	orbitalParams.semiMajorAxis          = 3200000 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 1.7;
@@ -186,9 +186,9 @@ void KerbalSystem::createJoolSubSystem()
 	CelestialBody::Parameters physicalParams;
 
 	// laythe
-	orbitalParams.inclination            = M_PI * 0.f / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 0.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 0.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 0.f / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 0.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 0.f / 180.f;
 	orbitalParams.eccentricity           = 0.f;
 	orbitalParams.semiMajorAxis          = 27184000 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 3.14;
@@ -197,9 +197,9 @@ void KerbalSystem::createJoolSubSystem()
 	createChild("Laythe", orbitalParams, physicalParams, "Jool");
 
 	// vall
-	orbitalParams.inclination            = M_PI * 0.f / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 0.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 0.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 0.f / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 0.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 0.f / 180.f;
 	orbitalParams.eccentricity           = 0.f;
 	orbitalParams.semiMajorAxis          = 43152000 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 0.9;
@@ -208,9 +208,9 @@ void KerbalSystem::createJoolSubSystem()
 	createChild("Vall", orbitalParams, physicalParams, "Jool");
 
 	// tylo
-	orbitalParams.inclination            = M_PI * 0.025f / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 0.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 0.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 0.025f / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 0.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 0.f / 180.f;
 	orbitalParams.eccentricity           = 0.f;
 	orbitalParams.semiMajorAxis          = 68500000 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 3.14;
@@ -219,9 +219,9 @@ void KerbalSystem::createJoolSubSystem()
 	createChild("Tylo", orbitalParams, physicalParams, "Jool");
 
 	// bop
-	orbitalParams.inclination            = M_PI * 15.f / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 10.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 25.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 15.f / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 10.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 25.f / 180.f;
 	orbitalParams.eccentricity           = 0.24f;
 	orbitalParams.semiMajorAxis          = 128500000 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 0.9;
@@ -230,9 +230,9 @@ void KerbalSystem::createJoolSubSystem()
 	createChild("Bop", orbitalParams, physicalParams, "Jool");
 
 	// pol
-	orbitalParams.inclination            = M_PI * 4.25f / 180.f;
-	orbitalParams.ascendingNodeLongitude = M_PI * 2.f / 180.f;
-	orbitalParams.periapsisArgument      = M_PI * 15.f / 180.f;
+	orbitalParams.inclination            = constant::pi * 4.25f / 180.f;
+	orbitalParams.ascendingNodeLongitude = constant::pi * 2.f / 180.f;
+	orbitalParams.periapsisArgument      = constant::pi * 15.f / 180.f;
 	orbitalParams.eccentricity           = 0.17f;
 	orbitalParams.semiMajorAxis          = 179890000 * distanceMultiplier;
 	orbitalParams.meanAnomalyAtEpoch     = 0.9;

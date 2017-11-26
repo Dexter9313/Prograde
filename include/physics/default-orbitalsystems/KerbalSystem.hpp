@@ -19,6 +19,8 @@
 #ifndef KERBALSYSTEM_HPP
 #define KERBALSYSTEM_HPP
 
+#include "math/constants.hpp"
+
 #include "../OrbitalSystem.hpp"
 
 class KerbalSystem : public OrbitalSystem

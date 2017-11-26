@@ -19,6 +19,8 @@
 #ifndef SOLARSYSTEM_HPP
 #define SOLARSYSTEM_HPP
 
+#include "math/constants.hpp"
+
 #include "../OrbitalSystem.hpp"
 
 class SolarSystem : public OrbitalSystem
