@@ -59,7 +59,9 @@ set(EXT_PROJECT_DIR ${PROJECT_SOURCE_DIR}/ext)
 	add_definitions(${MSVC_COMPILER_DEFS})
 
 	#URHO3D
-	add_subdirectory(${EXT_PROJECT_DIR}/urho3d)
+	if(NOT DEFINED URHO3D_LIBRARIES or NOT DEFINED URHO3D_INCLUDE_DIR)
+		add_subdirectory(${EXT_PROJECT_DIR}/urho3d)
+	endif
 	#set(URHO3D_LIBRARIES /home/florian/programmes/Urho3D/build/lib/libUrho3D.a)
 	#set(URHO3D_INCLUDE_DIR /home/florian/programmes/Urho3D/Source/Urho3D/ /home/florian/programmes/Urho3D/Source/ThirdParty)
 
