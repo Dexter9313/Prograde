@@ -17,14 +17,13 @@ install:
     - set URHO3D_INCLUDE_DIR="C:\projects\deps\Urho3D\Urho3D-1.6-Windows-64bit-STATIC\include;C:\projects\deps\Urho3D\Urho3D-1.6-Windows-64bit-STATIC\include\Urho3D\ThirdParty"
 
     # CMake refuses to generate MinGW Makefiles if sh.exe is in the Path
-    - ps: Get-Command sh.exe -All | Remove-Item
+    #- ps: Get-Command sh.exe -All | Remove-Item
 before_build:
     - set Path=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin;%Path%
     - cd C:\projects\prograde
 build_script:
     - mkdir build
     - cd build
-      # -G "MinGW Makefiles"
-    - cmake .. -DBOOST_ROOT="C:\Libraries\boost" #-DURHO3D_LIBRARIES=%URHO3D_LIBRARIES% -DURHO3D_INCLUDE_DIR=%URHO3D_INCLUDE_DIR%
+    - cmake .. -G "MinGW Makefiles" -DBOOST_ROOT="C:\Libraries\boost" #-DURHO3D_LIBRARIES=%URHO3D_LIBRARIES% -DURHO3D_INCLUDE_DIR=%URHO3D_INCLUDE_DIR%
     - cmake --build . --target prograde
     - cmake --build . --target prograde_test
