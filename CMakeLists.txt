@@ -50,12 +50,11 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake/modules)
 
 find_package(Threads REQUIRED)
 find_package(Boost REQUIRED)
-if(DEFINED USE_DIRECTX)
+if(DEFINED USE_DIRECTX AND USE_DIRECTX)
 	find_package(DirectX REQUIRED)
 else()
 	find_package(OpenGL REQUIRED)
 endif()
-
 #TODO put -fext-numeric-literals -lquadmath at right place
 set(EXTERNAL_LIBS_INCLUDE_DIRS ${Boost_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIR})
 
@@ -81,6 +80,7 @@ set(EXT_PROJECT_DIR ${PROJECT_SOURCE_DIR}/ext)
 	#URHO3D
 	if( (NOT DEFINED URHO3D_LIBRARIES) OR (NOT DEFINED URHO3D_INCLUDE_DIR) )
 		add_subdirectory(${EXT_PROJECT_DIR}/urho3d)
+		set(BUILT_URHO3D true)
 		MESSAGE(STATUS "Building URHO3D...")
 	else()
 		MESSAGE(STATUS "Using prebuilt URHO3D...")
@@ -101,7 +101,10 @@ endif()
 
 #EXECUTABLE 1 : FreeOrbiter Test
 add_executable(${PROJECT_TEST_NAME} ${TEST_FILES})
-add_dependencies(${PROJECT_TEST_NAME} google-test urho3d)
+add_dependencies(${PROJECT_TEST_NAME} google-test)
+if(BUILT_URHO3D)
+	add_dependencies(${PROJECT_TEST_NAME} urho3d)
+endif(BUILT_URHO3D)
 
 if(NOT WIN32)
     target_link_libraries(${PROJECT_TEST_NAME} ${GOOGLE_TEST_LIBRARIES})
@@ -120,7 +123,10 @@ target_link_libraries(${PROJECT_TEST_NAME} ${LD_LIBS})
 
 #EXECUTABLE 2 : FreeOrbiter
 add_executable(${PROJECT_NAME} ${MAIN_SRC_FILES})
-add_dependencies(${PROJECT_NAME} urho3d)
+if(BUILT_URHO3D)
+	add_dependencies(${PROJECT_NAME} urho3d)
+endif(BUILT_URHO3D)
+
 #TODO put -fext-numeric-literals -lquadmath at right place
 target_link_libraries(${PROJECT_NAME} ${LD_LIBS})
 
