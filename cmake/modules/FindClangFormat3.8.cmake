@@ -1,6 +1,6 @@
 string(REPLACE ":" ";" _PATH $ENV{PATH})
 foreach(p ${_PATH})
-    file(GLOB cand ${p}/clang-format*)
+    file(GLOB cand ${p}/clang-format-3.8*)
     if(cand)
 		foreach(TMP_PATH ${cand})
 			string(FIND ${TMP_PATH} "diff" FOUND)

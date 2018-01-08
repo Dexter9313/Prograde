@@ -17,22 +17,22 @@
 # Additional target to perform clang-format/clang-tidy run
 # Requires clang-format and clang-tidy
 
-find_package(ClangFormat "version 3.8.0-2ubuntu3~trusty5 (tags/RELEASE_380/final)")
+find_package(ClangFormat3.8)
 
 if(CLANG_FORMAT_FOUND)
-        message("clang-format executable: ${CLANG_FORMAT_EXECUTABLE}")
-        message("clang-format version: ${CLANG_FORMAT_VERSION}")
+        message("clang-format-3.8 executable: ${CLANG_FORMAT_EXECUTABLE}")
+        message("clang-format-3.8 version: ${CLANG_FORMAT_VERSION}")
 else()
-        message("clang-format executable not found")
+        message("clang-format-3.8 executable not found")
 endif()
 
-find_package(ClangTidy "version 3.8.0")
+find_package(ClangTidy3.8)
 
 if(CLANG_FORMAT_FOUND)
-	message("clang-tidy executable: ${CLANG_TIDY_EXECUTABLE}")
-		message("clang-tidy version: ${CLANG_TIDY_VERSION}")
+	message("clang-tidy-3.8 executable: ${CLANG_TIDY_EXECUTABLE}")
+		message("clang-tidy-3.8 version: ${CLANG_TIDY_VERSION}")
 else()
-        message("clang-tidy executable not found")
+        message("clang-tidy-3.8 executable not found")
 endif()
 
 # Get all project files
