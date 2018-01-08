@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2016 Florian Cabot
+    Copyright (C) 2018 Florian Cabot <florian.cabot@hotmail.fr>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
