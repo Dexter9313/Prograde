@@ -15,7 +15,7 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #INIT
-cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.2.3 FATAL_ERROR)
 
 set(PROJECT_NAME prograde)
 set(PROJECT_TEST_NAME ${PROJECT_NAME}_test)

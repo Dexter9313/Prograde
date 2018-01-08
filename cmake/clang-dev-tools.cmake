@@ -17,7 +17,7 @@
 # Additional target to perform clang-format/clang-tidy run
 # Requires clang-format and clang-tidy
 
-find_package(ClangFormat 3.8)
+find_package(ClangFormat "version 3.8.0-2ubuntu3~trusty5 (tags/RELEASE_380/final)")
 
 if(CLANG_FORMAT_FOUND)
         message("clang-format executable: ${CLANG_FORMAT_EXECUTABLE}")
@@ -26,7 +26,7 @@ else()
         message("clang-format executable not found")
 endif()
 
-find_package(ClangTidy 3.8)
+find_package(ClangTidy "version 3.8.0")
 
 if(CLANG_FORMAT_FOUND)
 	message("clang-tidy executable: ${CLANG_TIDY_EXECUTABLE}")
