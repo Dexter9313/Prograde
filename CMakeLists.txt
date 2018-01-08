@@ -23,7 +23,7 @@ if(MSVC)
 endif()
 
 #WARNINGS
-#TODO put -fext-numeric-literals -lquadmath at right place
+#TODO put -fext-numeric-literals at right place
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -g -Werror -fext-numeric-literals")
 endif()
@@ -34,7 +34,11 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake/modules)
 
 find_package(Threads REQUIRED)
 find_package(Boost REQUIRED)
-find_package(OpenGL REQUIRED)
+if(DEFINED USE_DIRECTX)
+	find_package(DirectX REQUIRED)
+else()
+	find_package(OpenGL REQUIRED)
+endif()
 
 #TODO put -fext-numeric-literals -lquadmath at right place
 set(EXTERNAL_LIBS_INCLUDE_DIRS ${Boost_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIR})
@@ -74,10 +78,9 @@ set(SYSTEM_INCLUDES ${EXTERNAL_LIBS_INCLUDE_DIRS} ${GOOGLE_TEST_INCLUDE_DIRS} ${
 include_directories(${COMMON_INCLUDES} SYSTEM ${SYSTEM_INCLUDES})
 
 #LINKING SETUP
-if(WIN32)
-	set(LD_LIBS ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} ${OPENGL_LIBRARIES} -lquadmath)
-else()
-	set(LD_LIBS ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} -ldl ${OPENGL_LIBRARIES} -lquadmath)
+set(LD_LIBS ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} ${OPENGL_LIBRARIES} -lquadmath)
+if(NOT WIN32)
+	set(LD_LIBS ${LD_LIBS} -ldl)
 endif()
 
 #EXECUTABLE 1 : FreeOrbiter Test
