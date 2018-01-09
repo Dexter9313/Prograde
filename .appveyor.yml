@@ -10,7 +10,7 @@ install:
     ############################################################################
     # Install Ninja
     ############################################################################
-    - set URHO3D_URL="https://downloads.sourceforge.net/project/urho3d/Urho3D/1.6/Urho3D-1.6-Windows-64bit-SHARED.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Furho3d%2Ffiles%2FUrho3D%2F1.6%2F&ts=1511717087&use_mirror=iweb"
+    - set URHO3D_URL="https://downloads.sourceforge.net/project/urho3d/Urho3D/1.6/Urho3D-1.6-Windows-64bit-SHARED.zip"
     - appveyor DownloadFile %URHO3D_URL% -FileName urho3d.zip
     - 7z x urho3d.zip -oC:\projects\deps\Urho3D > nul
     - set URHO3D_PATH="C:/projects/deps/Urho3D/Urho3D-1.6-Windows-64bit-SHARED"
