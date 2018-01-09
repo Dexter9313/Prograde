@@ -70,9 +70,9 @@
  * \endcode
  *
  * Not every function is detailed in this documentation as they are not supposed
- * to be used elsewhere in the project,
+ * to be used anywhere else in the project,
  * so for more details please directly read the Exceptions.hpp file's source
- * code.
+ * code and the corresponding platform specific headers.
  *
  * # Authorized libraries
  *
@@ -85,4 +85,6 @@
  *
  *  For now, this module can only use the C++ standard library.
  *
+ *  Any other library usage within this module will have to be discussed in an
+ * issue and properly documented if accepted.
  */

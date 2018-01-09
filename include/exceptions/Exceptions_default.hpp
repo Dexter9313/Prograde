@@ -21,17 +21,17 @@
 
 #include <iostream>
 
-void print_stacktrace(int calledFromSigInt);
+void print_stacktrace(bool calledFromSigHand);
 void init_exceptions(char* programName);
 
-//default error message
-inline void print_stacktrace(int calledFromSigInt)
+// default error message
+inline void print_stacktrace(bool calledFromSigHand)
 {
-	(void) calledFromSigInt;
+	(void) calledFromSigHand;
 	std::cerr << "A stacktrace cannot be printed on this system." << std::endl;
 }
 
-//by default, do nothing
+// by default, do nothing
 inline void init_exceptions(char* programName)
 {
 	(void) programName;

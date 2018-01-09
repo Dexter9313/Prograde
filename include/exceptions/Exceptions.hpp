@@ -23,6 +23,9 @@
 #include <sstream>
 #include <string>
 
+// Any hpp file included there must define these functions :
+// void print_stacktrace(bool calledFromSigHand);
+// void init_exceptions(char* programName);
 #ifdef __unix
 #include "Exceptions_unix.hpp"
 #else
@@ -32,18 +35,19 @@
 /*! \ingroup exceptions
  * Prints stack trace and throws a critical exception.
  *
- * This exception will be automatically catched within the BEGIN_EXCEPTIONS and
- * END_EXCEPTIONS macros. These macros will ensure the displaying of a helpful
+ * This exception will be automatically catched between the #BEGIN_EXCEPTIONS
+ * and
+ * #END_EXCEPTIONS macros. These macros will ensure the displaying of a helpful
  * debug message and will exit the program with the error code EXIT_FAILURE.
  * The debug message contains three automatically-filled informations and a
  * custom string. These informations are : the function name of the function
  * being called, the file name which contains the function and the line number
- * within the file where Critical has been called.
+ * within the file where #CRITICAL has been called.
  * \param str The custom string to be displayed for debugging.
  */
 #define CRITICAL(str)                                                     \
 	{                                                                     \
-		print_stacktrace(0);                                              \
+		print_stacktrace(false);                                          \
 		throw(CriticalException(                                          \
 		    str, __func__, /*NOLINT complaining about __func__ argument*/ \
 		    __FILE__, __LINE__));                                         \
@@ -52,28 +56,32 @@
 /*! \ingroup exceptions
  * Initializes the critical exceptions handling.
  *
- * This exceptions system prints automatically stack traces whenever a critical
+ * This exceptions system prints stack traces automatically whenever a critical
  * signal is sent, whether it is from the system (SIG_SEGV for example) or by
  * the program itself through the #CRITICAL macro.
  *
  * Because of the way it handles system signals, it is also currently not
- * possible to use the signal() function to redefine system signal handlers. If
+ * possible to use the signal() function to redefine some system signal handlers
+ * (details about which one are platform specific, please read the
+ * implementation). If
  * you wish to do specific things on system signal capture, please edit the
- * signal handler defined in the Exceptions.hpp file to do it there. It is
+ * signal handler defined in the Exceptions.hpp file corresponding to the
+ * platform. It is
  * expected that some additional functions or macros will be written to allow
  * system signals handling anywhere else in the code.
  *
  * This macro has to be put within the main function together with the
- * END_EXCEPTIONS macro and has to be called only once in the whole program. It
+ * #END_EXCEPTIONS macro and has to be called only once in the whole program. It
  * will assume the argv parameter is passed to main and use it automatically.
  * To be more precise, it will start a try{} block which has to be closed with
- * the END_EXCEPTIONS macro, which holds the corresponding closing bracket and
+ * the #END_EXCEPTIONS macro, which holds the corresponding closing bracket and
  * the catch{} block.
  */
 #define BEGIN_EXCEPTIONS                                           \
 	init_exceptions(argv[0]); /*NOLINT complaining about argv[0]*/ \
 	try /*NOLINT clang-tidy thinks this is never executed */       \
 	{
+
 /*! \ingroup exceptions
  * Closes the critical exceptions handling.
  *
@@ -82,15 +90,20 @@
  * the program itself through the #CRITICAL macro.
  *
  * Because of the way it handles system signals, it is also currently not
- * possible to use the signal() function to redefine system signal handlers. If
+ * possible to use the signal() function to redefine some system signal handlers
+ * (details about which one are platform specific, please read the
+ * implementation). If
  * you wish to do specific things on system signal capture, please edit the
- * signal handler defined in the Exceptions.hpp file to do it there. It is
+ * signal handler defined in the Exceptions.hpp file corresponding to the
+ * platform to do it there. It is
  * expected that some additional functions or macros will be written to allow
  * system signals handling anywhere else in the code.
  *
  * This macro has to be put within the main function together with the
- * END_EXCEPTIONS macro and has to be called only once in the whole program. To
- * be more precise, it will close the try{} block opened by the BEGIN_EXCEPTIONS
+ * #BEGIN_EXCEPTIONS macro and has to be called only once in the whole program.
+ * To
+ * be more precise, it will close the try{} block opened by the
+ * #BEGIN_EXCEPTIONS
  * macro.
  */
 #define END_EXCEPTIONS                       \
@@ -101,11 +114,11 @@
 		exit(EXIT_FAILURE);                  \
 	}
 
-/*! Exception to be thrown by the CRITICAL macro
+/*! Exception to be thrown by the #CRITICAL macro
  *
  * It is not intended to be thrown by the user, even if he could in theory. The
  * prefered way to use it
- * is through the CRITICAL macro.
+ * is through the #CRITICAL macro.
  * It contains an error message, the name of the function that threw it, the
  * name of the file that contains
  * the throw statement and the line at which this throw statement can be found.
@@ -129,7 +142,9 @@ class CriticalException
 	/*! Constructor
 	 *
 	 * \param message Custom message that should be displayed.
-	 * \param
+	 * \param funcName Name of the function it was called inside
+	 * \param file Name of the file it was called inside
+	 * \param line Line in the file which it was called at
 	 */
 	CriticalException(std::string message, std::string funcName,
 	                  std::string file, int line)
@@ -139,6 +154,9 @@ class CriticalException
 	    , line(line)
 	{
 	}
+
+	/*! Transforms the Exception into a nice character string
+	 */
 	std::string toStr() const
 
 	{
@@ -147,6 +165,11 @@ class CriticalException
 	}
 };
 
+/*! Puts the exception's string form in the stream
+ *
+ * \param stream stream to use
+ * \param exception exception to print in stream
+ */
 inline std::ostream& operator<<(std::ostream& stream,
                                 CriticalException const& exception)
 {

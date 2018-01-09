@@ -16,6 +16,12 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
+// DISCLAIMER : most of the code in this file has been adapted from this
+// article, so Prograde doesn't own some bits of it :
+// *Catching Exceptions and Printing Stack Traces for C on Windows, Linux, &
+// Mac* written by Job Vranish
+// https://spin.atomicobject.com/2013/01/13/exceptions-stack-traces-c/
+
 #ifndef EXCEPTIONS_UNIX_HPP
 #define EXCEPTIONS_UNIX_HPP
 
@@ -28,27 +34,32 @@
 
 #define MAX_BACKTRACE_LINES 64
 
+/*! Encapsulation of the _programName global variable. If you read this in
+ * the documentation, you can ignore this implementation class.
+ */
 class Exceptions
 {
   public:
+	/*! \{ */
 	static char*& getProgramName()
 	{
 		static char* _programName;
 		return _programName;
 	}
+	/*! \} */
 };
 
-void print_stacktrace(int calledFromSigInt);
+void print_stacktrace(bool calledFromSigHand);
 void posix_signal_handler(int sig);
 void set_signal_handler(sig_t handler);
 void init_exceptions(char* programName);
 int addr2line(char const* const program_name, void const* const addr,
               int lineNb);
 
-// prints formated stack trace with most information as possible
+// prints formated stack trace with the most information as possible
 // parameter indicates if the function is called by the signal handler or not
 //(to hide the call to the signal handler)
-inline void print_stacktrace(int calledFromSigInt)
+inline void print_stacktrace(bool calledFromSigHand)
 {
 	void* buffer[MAX_BACKTRACE_LINES];
 	char** strings;
@@ -64,12 +75,13 @@ inline void print_stacktrace(int calledFromSigInt)
 
 	int i = 1;
 
-	if(calledFromSigInt != 0)
+	// we don't want to print the signal handler call in the stack trace
+	if(calledFromSigHand)
 		++i;
 
 	for(; i < nptrs - 2; ++i)
 	{
-		// if addr2line failed, print what we can
+		// if addr2line failed, print what we can anyway
 		if(addr2line(Exceptions::getProgramName(), buffer[i], nptrs - 2 - i - 1)
 		   != 0)
 			std::cerr << "[" << nptrs - 2 - i - 1 << "] " << strings[i]
@@ -81,7 +93,7 @@ inline void print_stacktrace(int calledFromSigInt)
 
 inline void posix_signal_handler(int sig)
 {
-	print_stacktrace(1);
+	print_stacktrace(true);
 
 	switch(sig)
 	{
@@ -129,16 +141,18 @@ inline void posix_signal_handler(int sig)
 
 inline void set_signal_handler(sig_t handler)
 {
+	// SIGINT and SIGTERM are considered normal behavior of the program,
+	// not exceptions
 	signal(SIGABRT, handler);
 	signal(SIGFPE, handler);
 	signal(SIGILL, handler);
-	//signal(SIGINT, handler);
+	// signal(SIGINT, handler);
 	signal(SIGSEGV, handler);
-	//signal(SIGTERM, handler);
+	// signal(SIGTERM, handler);
 }
 
 // lib activation, first thing to do in main
-// programName should be argv[0]
+// programName should be set to argv[0]
 inline void init_exceptions(char* programName)
 {
 	set_signal_handler(posix_signal_handler);
