@@ -24,7 +24,7 @@
 #include <cmath>
 
 #include "Vector3.hpp"
-//#include "exceptions/Exceptions.hpp"
+#include "exceptions/Exceptions.hpp"
 
 /*! \ingroup math
  * Represents a quadridimensional vector to be used for algebra and

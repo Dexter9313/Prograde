@@ -88,15 +88,15 @@ Vector3& Vector3::operator/=(double scalar)
 
 double& Vector3::operator[](unsigned int index)
 {
-	/*if(index > 2)
-	    CRITICAL("Index out of bound.");*/
+	if(index > 2)
+		CRITICAL("Index out of bound.");
 	return data[index];
 }
 
 double Vector3::operator[](unsigned int index) const
 {
-	/*if(index > 2)
-	    CRITICAL("Index out of bound.");*/
+	if(index > 2)
+		CRITICAL("Index out of bound.");
 	return data[index];
 }
 

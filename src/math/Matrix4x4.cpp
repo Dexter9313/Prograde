@@ -109,11 +109,10 @@ Matrix4x4::Matrix4x4(std::array<std::array<double, 4>, 3> data)
 Matrix4x4::Matrix4x4(std::array<std::array<double, 4>, 4> data)
     : data(std::move(data))
 {
-	/*if(data[3][0] != 0 || data[3][1] != 0 || data[3][2] != 0 || data[3][3] !=
-	1)
+	if(data[3][0] != 0 || data[3][1] != 0 || data[3][2] != 0 || data[3][3] != 1)
 	{
-	    CRITICAL("NOT OK");
-	}*/
+		CRITICAL("INVALID MATRIX");
+	}
 }
 
 Matrix4x4& Matrix4x4::operator*=(Matrix4x4 const& matrixToMultiply)

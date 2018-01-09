@@ -23,7 +23,7 @@
 
 #include "Matrix4x4.hpp"
 #include "Vector4.hpp"
-//#include "exceptions/Exceptions.hpp"
+#include "exceptions/Exceptions.hpp"
 
 /*! \ingroup math
  * Vector-space basis way to represent a combination of rotations and
