@@ -16,8 +16,8 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-#ifndef CONSTANTS_H
-#define CONSTANTS_H
+#ifndef CONSTANTS_HPP
+#define CONSTANTS_HPP
 
 #include <boost/math/constants/constants.hpp>
 
@@ -41,4 +41,4 @@ static const double G = 6.67408e-11;
 static const double NaN = nan("");
 }
 
-#endif // CONSTANTS_H
+#endif // CONSTANTS_HPP

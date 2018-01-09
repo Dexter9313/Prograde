@@ -16,8 +16,8 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-#ifndef ORBIT_H
-#define ORBIT_H
+#ifndef ORBIT_HPP
+#define ORBIT_HPP
 
 #include <cmath>
 #include <iostream>
@@ -80,4 +80,4 @@ class Orbit
 
 std::ostream& operator<<(std::ostream& stream, Orbit const& orbit);
 
-#endif // ORBIT_H
+#endif // ORBIT_HPP

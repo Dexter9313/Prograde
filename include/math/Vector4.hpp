@@ -16,8 +16,8 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-#ifndef VECTOR4D_H
-#define VECTOR4D_H
+#ifndef VECTOR4D_HPP
+#define VECTOR4D_HPP
 
 #include <array>
 #include <iostream>
@@ -341,4 +341,4 @@ bool operator!=(Vector4 const& a, Vector4 const& b);
  */
 std::ostream& operator<<(std::ostream& stream, Vector4 const& vector);
 
-#endif // VECTOR4D_H
+#endif // VECTOR4D_HPP

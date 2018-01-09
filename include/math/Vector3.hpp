@@ -16,8 +16,8 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-#ifndef VECTOR3D_H
-#define VECTOR3D_H
+#ifndef VECTOR3D_HPP
+#define VECTOR3D_HPP
 
 #include <array>
 #include <iostream>
@@ -295,4 +295,4 @@ std::ostream& operator<<(std::ostream& stream, Vector3 const& vector);
 
 double distance(Vector3 const& pointA, Vector3 const& pointB);
 
-#endif // VECTOR3D_H
+#endif // VECTOR3D_HPP
