@@ -29,11 +29,7 @@
  * Represents a tridimensional vector to be used for algebra and representation
  * of a point/vertex in 3D space.
  *
- * See \ref math group description for conventions.
- *
- * In this documentation, we will use the notation [x; y; z] to describe a
- * mathematical vector in vector-space R^3 with components of respective values
- * x, y and z.
+ * See \ref math group description for conventions and notations.
  *
  * This class is used whenever possible instead of any library vector class to
  * ensure libraries can be changed easily if needed. Converters for different
@@ -142,22 +138,30 @@ class Vector3
 	/*! Returns a reference to a specific component of this vector
 	 *
 	 * Indexes correspondance :
+	 *
 	 * 0 <-> x
+	 *
 	 * 1 <-> y
+	 *
 	 * 2 <-> z
 	 *
 	 * \param index index of the component
+	 * \throws #CriticalException if and only if index > 2
 	 */
 	double& operator[](unsigned int index);
 
 	/*! Returns the value of a specific component of this vector
 	 *
 	 * Indexes correspondance :
+	 *
 	 * 0 <-> x
+	 *
 	 * 1 <-> y
+	 *
 	 * 2 <-> z
 	 *
 	 * \param index index of the component
+	 * \throws #CriticalException if and only if index > 2
 	 */
 	double operator[](unsigned int index) const;
 
@@ -293,6 +297,14 @@ bool operator!=(Vector3 const& a, Vector3 const& b);
  */
 std::ostream& operator<<(std::ostream& stream, Vector3 const& vector);
 
+/*! Distance between two points
+ * \relates Vector3
+ *
+ * Uses Vector3::length so that it uses the same norm (L_2 in this case).
+ *
+ * \param pointA first point
+ * \param pointB second point
+ */
 double distance(Vector3 const& pointA, Vector3 const& pointB);
 
 #endif // VECTOR3D_HPP

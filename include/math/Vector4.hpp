@@ -20,8 +20,8 @@
 #define VECTOR4D_HPP
 
 #include <array>
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
 #include "Vector3.hpp"
 #include "exceptions/Exceptions.hpp"
@@ -33,13 +33,10 @@
  * coordinates](https://en.wikipedia.org/wiki/Homogeneous_coordinates#Use_in_computer_graphics)
  * to simplify transforms. In a way, the fourth component authorizes or forbids
  * translation on the vector
- * when multiplied by a transformation matrix (position-vector vs velocity-vector for example).
+ * when multiplied by a transformation matrix (position-vector vs
+ * velocity-vector for example).
  *
- * See \ref math group description for conventions.
- *
- * In this documentation, we will use the notation [x; y; z; w] to describe a
- * mathematical vector in vector-space R^4 with components of respective values
- * x, y, z and w.
+ * See \ref math group description for conventions and notations.
  *
  * This class is used whenever possible instead of any library vector class to
  * ensure libraries can be changed easily if needed. Converters for different
@@ -124,9 +121,9 @@ class Vector4
 	 *
 	 * Element-wise vector sum is used for x, y and z components.
 	 *
-	 * w remains unchanged, unless vectorToAdd's w component is 1, then this' w
-	 * component will be set to 1. This ensures commutativity of the addition
-	 * and makes the most sense. Indeed,
+	 * w remains unchanged, unless vectorToAdd's w component is 1, then the w
+	 * component of this will be set to 1. This ensures commutativity of the
+	 * addition and makes the most sense. Indeed,
 	 * "a position + a translation = a position" seems sensible.
 	 * \param vectorToAdd Vector4 to be added.
 	 */
@@ -177,9 +174,15 @@ class Vector4
 	 *
 	 * Indexes correspondance :
 	 * 0 <-> x
+	 *
 	 * 1 <-> y
+	 *
 	 * 2 <-> z
+	 *
 	 * 3 <-> w
+	 *
+	 * \param index index of the component
+	 * \throws #CriticalException if and only if index > 2
 	 *
 	 * \param index index of the component
 	 */
@@ -189,11 +192,15 @@ class Vector4
 	 *
 	 * Indexes correspondance :
 	 * 0 <-> x
+	 *
 	 * 1 <-> y
+	 *
 	 * 2 <-> z
+	 *
 	 * 3 <-> w
 	 *
 	 * \param index index of the component
+	 * \throws #CriticalException if and only if index > 2
 	 */
 	double operator[](unsigned int index) const;
 
@@ -270,7 +277,7 @@ Vector4 operator-(Vector4 const& a, Vector4 const& b);
 /*! Dot product of two vectors
  * \relates Vector4
  *
- * Equivalent to conversion of both parameters to Vector3s then calling
+ * Equivalent to converting both parameters to Vector3s then calling
  * dotProduct() on them as Vector3s (w component is ignored).
  * \param a first dot product parameter
  * \param b second dot product parameter
@@ -280,8 +287,13 @@ double dotProduct(Vector4 const& a, Vector4 const& b);
 /*! Cross product of two vectors
  * \relates Vector4
  *
- * Equivalent to conversion of both parameters to Vector3s then calling
- * crossProduct() on them as Vector3s (w component is ignored).
+ * Equivalent to converting both parameters to Vector3s then calling
+ * crossProduct() on them as Vector3s. This results in a Vector3 on which
+ * we append a w component defined as in the following :
+ * the w component of the result is set to 1 if and only if both 
+ * w components of a and b are 1, and 0 instead.
+ * This means the result is a position-vector if and only if both 
+ * parameters are position-vectors, which makes the most sense.
  * \param a first cross product parameter
  * \param b second cross product parameter
  */
@@ -317,7 +329,7 @@ Vector4 operator/(Vector4 const& vector, double scalar);
 /*! Tests equality between two vectors
  * \relates Vector4
  *
- * Each components have to be equal.
+ * Each components have to be equal, w included.
  * \param a first vector to compare to second
  * \param b second vector to compare to first
  */

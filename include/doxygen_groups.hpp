@@ -27,6 +27,24 @@
  * refer to an "up" direction.
  *  - Angles with implicit units are in radians
  *
+ *  # Notations
+ *
+ *  In the whole documentation, we will use the following notations.
+ *
+ * - [x; y; z] describes a mathematical vector in vector-space R^3 with
+ * components of respective values x, y and z.
+ *
+ * - [x; y; z; w] describes a mathematical vector in vector-space R^4 with
+ * components of respective values x, y, z and w.
+ *
+ * - [a b c; d e f; g h i] describes a mathematical 3x3
+ * matrix with column-vectors [a; d; g], [b; e; h] and [c; f; i].
+ *
+ * - [a b c d; e f g h; i j k l; m n o p]
+ * describes a mathematical 4x4
+ * matrix with column-vectors [a; e; i; m], [b; f; j; n], [c; g; k; o]
+ * and [d; h; l; p].
+ *
  *  # Authorized libraries
  *
  *  To better control what uses which library, each module has a set of

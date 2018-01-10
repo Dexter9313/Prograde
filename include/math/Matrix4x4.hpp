@@ -30,17 +30,10 @@
  * Mainly used to represent as a 4x4 matrix an [affine
  * transformation](https://en.wikipedia.org/wiki/Transformation_matrix#Affine_transformations)
  * on 3D vectors
- * which are represented as Vector4s in [homogeneous
+ * which are represented as #Vector4 in [homogeneous
  * coordinates](https://en.wikipedia.org/wiki/Homogeneous_coordinates#Use_in_computer_graphics).
  *
  * See \ref math group description for conventions.
- *
- * SEE TODODOC In this documentation, we will use the notation [x; y; z] to
- * describe a
- * mathematical vector in vector-space R^3 with components of respective values
- * x, y and z.
- * Also we will use notation [a b c; d e f;g h i] to describe a mathematical 3x3
- * matrix with column-vectors [a; d; g], [b; e; h] and [c; f; i].
  *
  * This class is used whenever possible instead of any library matrix class to
  * ensure libraries can be changed easily if needed. Usage of another
@@ -48,7 +41,6 @@
  * the \ref math module where algebraic algorithms are written) and should be
  * properly documented.
  */
-
 class Matrix4x4
 {
   public:
@@ -99,7 +91,8 @@ class Matrix4x4
 	 *
 	 * Constructs the rotation matrix that, as a transform,
 	 * rotates vectors around the aroundAxis axis with angle fromRotationAngle.
-	 * Last line and column are equal to [0 0 0 1] and [0; 0; 0; 1] respectively.
+	 * Last line and column are equal to [0 0 0 1] and [0; 0; 0; 1]
+	 * respectively.
 	 * \param fromRotationAngle angle of the rotation
 	 * \param aroundAxis
 	 */
@@ -119,15 +112,18 @@ class Matrix4x4
 	 *
 	 * Constructs the matrix from an array of coefficients.
 	 * The outermost array contains the matrix lines which are arrays.
-	 * **THROW** An exception will be thrown if the last line is different from
-	 * [0 0 0 1].
+	 *
 	 * \param data array of coefficients
+	 *
+	 * \throw CriticalException if and only if the last line is different from
+	 * [0 0 0 1].
 	 */
 	Matrix4x4(std::array<std::array<double, 4>, 4> data);
 
 	/*! Multiplies another matrix to this matrix
 	 *
-	 * Classic matrix product is used.
+	 * Classic [matrix
+	 * product](https://en.wikipedia.org/wiki/Matrix_multiplication) is used.
 	 * Assigns (*this) * matrixToMultiply to this. Notice this matrix is the
 	 * left member of the operation.
 	 * In transformation terms, this becomes the transformation (this °
@@ -189,6 +185,8 @@ class Matrix4x4
 	 * 3 <-> fourth line
 	 *
 	 * \param index index of the line
+	 *
+	 * \throw CriticalException if and only if index > 3
 	 */
 	std::array<double, 4>& operator[](unsigned int index);
 
@@ -205,6 +203,8 @@ class Matrix4x4
 	 * 3 <-> fourth line
 	 *
 	 * \param index index of the line
+	 *
+	 * \throw CriticalException if and only if index > 3
 	 */
 	std::array<double, 4> operator[](unsigned int index) const;
 
@@ -221,6 +221,8 @@ class Matrix4x4
 	 * 3 <-> fourth column
 	 *
 	 * \param index index of the column
+	 *
+	 * \throw CriticalException if and only if index > 3
 	 */
 	std::array<double, 4> getColumn(unsigned int index) const;
 
@@ -252,7 +254,7 @@ Matrix4x4 operator*(Matrix4x4 const& a, Matrix4x4 const& b);
  *
  * Implements [usual
  * definition](https://en.wikipedia.org/wiki/Matrix_multiplication) considering
- * a vector is a one-dimensional matrix.
+ * a vector is a one-column matrix.
  * \param matrix matrix to be multiplied
  * \param vector vector to be multiplied
  */
@@ -264,7 +266,7 @@ Vector4 operator*(Matrix4x4 const& matrix, Vector4 const& vector);
  *
  * Implements [usual
  * definition](https://en.wikipedia.org/wiki/Matrix_multiplication) considering
- * a vector is a one-dimensional matrix. matrix is considered to be a 3x3 matrix
+ * a vector is a one-column matrix. matrix is considered to be a 3x3 matrix
  * (last line and last column are ignored).
  * \param matrix matrix to be multiplied
  * \param vector vector to be multiplied

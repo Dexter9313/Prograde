@@ -111,7 +111,7 @@ Matrix4x4::Matrix4x4(std::array<std::array<double, 4>, 4> data)
 {
 	if(data[3][0] != 0 || data[3][1] != 0 || data[3][2] != 0 || data[3][3] != 1)
 	{
-		CRITICAL("INVALID MATRIX");
+		CRITICAL("Invalid matrix : last line isn't [0; 0; 0; 1].");
 	}
 }
 
@@ -169,16 +169,28 @@ Matrix4x4& Matrix4x4::operator/=(double scalar)
 
 std::array<double, 4>& Matrix4x4::operator[](unsigned int index)
 {
+	if(index > 3)
+	{
+		CRITICAL("Index out of bounds.");
+	}
 	return data[index];
 }
 
 std::array<double, 4> Matrix4x4::operator[](unsigned int index) const
 {
+	if(index > 3)
+	{
+		CRITICAL("Index out of bounds.");
+	}
 	return data[index];
 }
 
 std::array<double, 4> Matrix4x4::getColumn(unsigned int index) const
 {
+	if(index > 3)
+	{
+		CRITICAL("Index out of bounds.");
+	}
 	return {{data[0][index], data[1][index], data[2][index], data[3][index]}};
 }
 
@@ -223,7 +235,7 @@ Vector3 operator*(Matrix4x4 const& matrix, Vector3 const& vector)
 	for(unsigned int i(0); i < 2; ++i)
 	{
 		result[i] = matrix[i][0] * vector[0] + matrix[i][1] * vector[1]
-		            + matrix[i][2] * vector[2] + matrix[i][3] * vector[3];
+		            + matrix[i][2] * vector[2];
 	}
 
 	return result;
@@ -266,18 +278,7 @@ bool operator==(Matrix4x4 const& a, Matrix4x4 const& b)
 
 bool operator!=(Matrix4x4 const& a, Matrix4x4 const& b)
 {
-	for(unsigned int i(0); i < 4; ++i)
-	{
-		for(unsigned int j(0); j < 4; ++j)
-		{
-			if(a[i][j] != b[i][j])
-			{
-				return true;
-			}
-		}
-	}
-
-	return false;
+	return !(a == b);
 }
 
 std::ostream& operator<<(std::ostream& stream, Matrix4x4 const& matrix)

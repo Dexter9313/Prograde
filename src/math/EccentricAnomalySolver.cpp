@@ -19,7 +19,7 @@
 #include "math/EccentricAnomalySolver.hpp"
 
 // If too slow, don't use boost and program it yourself
-//(Newton method isn't hard at all to implement
+//(Newton method isn't hard at all to implement)
 double EccentricAnomalySolver::solveForEllipticOrbit(double meanAnomaly,
                                                      double eccentricity)
 {
@@ -38,15 +38,20 @@ double EccentricAnomalySolver::solveForEllipticOrbit(double meanAnomaly,
 
 double EccentricAnomalySolver::solveForParabolicOrbit(double meanAnomaly)
 {
-	// E^3+3E-6M = 0
-	// Solving using Cardano method (and the fact that there will always be one
+	// solves D^3+3D-6M = 0
+	// Solving using Cardano's method (and the fact that there will always be
+	// one
 	// single real root)
+	// (french source, hope it's understandable anyway, better source needed,
+	// I don't find the english version is as clear in Wikipedia)
 	// https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Cardan#Si_.CE.94_est_n.C3.A9gatif
 	double p(3), q(-6 * meanAnomaly);
 	double term(sqrt(q * q / 4.0 + p * p * p / 27.0));
 	return cbrt(-q / 2.0 + term) + cbrt(-q / 2.0 - term);
 }
 
+// If too slow, don't use boost and program it yourself
+//(Newton method isn't hard at all to implement)
 double EccentricAnomalySolver::solveForHyperbolicOrbit(double meanAnomaly,
                                                        double eccentricity)
 {

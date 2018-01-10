@@ -31,8 +31,8 @@
  *
  * See \ref math group description for conventions.
  *
- * Vector-space used is R^3. This representation is a particular base from R^3
- * that is rotated and translated. Algebra
+ * Vector-space used is R^3. This representation is a particular orthonormal
+ * basis for R^3 that is rotated and translated. Algebra
  * traditionally only considers vectors but we will consider positions as well
  * through [homogeneous
  * coordinates](https://en.wikipedia.org/wiki/Homogeneous_coordinates#Use_in_computer_graphics),
@@ -81,7 +81,7 @@ class CoordinateSystem
 
 	/*! Gets the transformation matrix associated to the coordinate system.
 	 *
-	 * If a matrix mat is returned, then for any Vector4 v expressed in this coordinate system, 
+	 * If a matrix mat is returned, then for any #Vector4 v expressed in this coordinate system, 
 	 * then mat*v is v expressed in the absolute system.
 	 */
 	Matrix4x4 getTransform() const { return transform; };
@@ -125,6 +125,8 @@ class CoordinateSystem
 	/*! Returns basis vector x{index}
 	 *
 	 * \param index index of the basis vector
+	 *
+	 * \throws #CriticalException if and only if index > 2
 	 */
 	Vector3 operator[](unsigned int index) const;
 

@@ -23,6 +23,8 @@
 
 /*! \ingroup math
  * Contains all mathematical and physical constants
+ *
+ * See \ref math group description for conventions and notations.
  */
 namespace constant
 {
