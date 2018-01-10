@@ -17,17 +17,16 @@
 */
 
 #include "exceptions/Exceptions.hpp"
-#include <iostream>
 
 #include "graphics/LauncherWindow.hpp"
 #include "graphics/MainWindow.hpp"
 
 int main(int argc, char* argv[])
 {
+	// see Exceptions module documentation
 	BEGIN_EXCEPTIONS
 
 	Urho3D::ParseArguments(argc, argv);
-	// Urho3D::SharedPtr<Urho3D::Context> context(new Urho3D::Context());
 
 	// dynamic allocation for memory management,
 	// there is no need to keep the launcher's data in memory while simulation
@@ -50,6 +49,7 @@ int main(int argc, char* argv[])
 	delete copy; // save more memory
 
 	mWindow.Run();
+
 	END_EXCEPTIONS
 
 	return 0;
