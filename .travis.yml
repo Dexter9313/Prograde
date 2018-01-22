@@ -15,7 +15,7 @@ script:
     - mkdir -p urho3d
     - cd urho3d/
     - wget https://iweb.dl.sourceforge.net/project/urho3d/Urho3D/1.6/Urho3D-1.6-Linux-64bit-SHARED.tar.gz
-    - tar -xvzf Urho3D-1.6-Linux-64bit-SHARED.tar.gz
+    - tar -xvzf Urho3D-1.6-Linux-64bit-SHARED.tar.gz > /dev/null
     - export URHO3D_PATH=$PWD/Urho3D-1.6-Linux-64bit-SHARED
     - export URHO3D_LIBRARIES=$URHO3D_PATH/usr/local/lib/Urho3D/libUrho3D.so
     - export URHO3D_INCLUDE_DIRS="$URHO3D_PATH/usr/local/include;$URHO3D_PATH/usr/local/include/Urho3D/ThirdParty"
