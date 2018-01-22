@@ -78,7 +78,7 @@ void MainWindow::Start()
 	cam = new Camera(context_, systemScene);
 	cam->setTarget(orbitalSystem->getAllCelestialBodiesPointers()[0]);
 
-	Urho3D::Renderer* renderer = GetSubsystem<Urho3D::Renderer>();
+	auto renderer = GetSubsystem<Urho3D::Renderer>();
 
 	// Set up a viewport to the Renderer subsystem so that the 3D scene can be
 	// seen. We need to define the scene and the camera
@@ -90,10 +90,9 @@ void MainWindow::Start()
 	    context_, systemScene, cam->getNode()->GetComponent<Urho3D::Camera>()));
 	renderer->SetViewport(0, viewport);
 
-	Urho3D::ResourceCache* cache = GetSubsystem<Urho3D::ResourceCache>();
-	Urho3D::UIElement* uiRoot    = GetSubsystem<Urho3D::UI>()->GetRoot();
-	Urho3D::XMLFile* style
-	    = cache->GetResource<Urho3D::XMLFile>("UI/DefaultStyle.xml");
+	auto cache                = GetSubsystem<Urho3D::ResourceCache>();
+	Urho3D::UIElement* uiRoot = GetSubsystem<Urho3D::UI>()->GetRoot();
+	auto style = cache->GetResource<Urho3D::XMLFile>("UI/DefaultStyle.xml");
 	uiRoot->SetDefaultStyle(style);
 
 	debugText = new Urho3D::Text(context_);
@@ -169,7 +168,7 @@ MainWindow::~MainWindow()
 std::string MainWindow::timeToStr(UniversalTime uT)
 {
 	UniversalTime uT2 = floor(uT);
-	int64_t time(uT2.convert_to<int64_t>());
+	auto time(uT2.convert_to<int64_t>());
 	unsigned int sec, min, hour, day, month(0), year(1999);
 	sec = time % 60;
 	time -= sec;

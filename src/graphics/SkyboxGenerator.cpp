@@ -377,9 +377,9 @@ Color SkyboxGenerator::colorFromColorIndex(float ci)
 void SkyboxGenerator::createSceneNode(Urho3D::Scene* scene,
                                       std::array<Urho3D::Image*, 6>& ims)
 {
-	Urho3D::ResourceCache* cache = scene->GetSubsystem<Urho3D::ResourceCache>();
-	Urho3D::Node* skyNode        = scene->CreateChild("Sky");
-	Urho3D::Skybox* skybox       = skyNode->CreateComponent<Urho3D::Skybox>();
+	auto cache            = scene->GetSubsystem<Urho3D::ResourceCache>();
+	Urho3D::Node* skyNode = scene->CreateChild("Sky");
+	auto skybox           = skyNode->CreateComponent<Urho3D::Skybox>();
 	skybox->SetModel(cache->GetResource<Urho3D::Model>("Models/Box.mdl"));
 
 	auto tex = new Urho3D::TextureCube(scene->GetContext());

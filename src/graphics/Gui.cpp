@@ -21,11 +21,10 @@
 Gui::Gui(Urho3D::Context* context)
     : Urho3D::Object(context)
 {
-	Urho3D::ResourceCache* cache = GetSubsystem<Urho3D::ResourceCache>();
-	Urho3D::Graphics* graphics   = GetSubsystem<Urho3D::Graphics>();
-	uiRoot                       = GetSubsystem<Urho3D::UI>()->GetRoot();
-	Urho3D::XMLFile* style
-	    = cache->GetResource<Urho3D::XMLFile>("UI/DefaultStyle.xml");
+	auto cache    = GetSubsystem<Urho3D::ResourceCache>();
+	auto graphics = GetSubsystem<Urho3D::Graphics>();
+	uiRoot        = GetSubsystem<Urho3D::UI>()->GetRoot();
+	auto style    = cache->GetResource<Urho3D::XMLFile>("UI/DefaultStyle.xml");
 	uiRoot->SetDefaultStyle(style);
 
 	auto button = new Urho3D::Button(context_);

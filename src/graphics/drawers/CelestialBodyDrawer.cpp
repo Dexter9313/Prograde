@@ -22,9 +22,9 @@ CelestialBodyDrawer::CelestialBodyDrawer(Urho3D::Scene* scene,
     : Drawer(scene)
     , drawnBody(drawnBody)
 {
-	Urho3D::ResourceCache* cache = scene->GetSubsystem<Urho3D::ResourceCache>();
-	node                         = scene->CreateChild();
-	Urho3D::StaticModel* sphere  = node->CreateComponent<Urho3D::StaticModel>();
+	auto cache  = scene->GetSubsystem<Urho3D::ResourceCache>();
+	node        = scene->CreateChild();
+	auto sphere = node->CreateComponent<Urho3D::StaticModel>();
 	sphere->SetModel(cache->GetResource<Urho3D::Model>(
 	    "Models/Sphere.mdl")); // TODO(florian) : check true size of sphere is 1
 	auto mat = new Urho3D::Material(scene->GetContext());

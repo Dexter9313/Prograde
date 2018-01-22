@@ -24,15 +24,13 @@ OrbitalSystemDrawer::OrbitalSystemDrawer(Urho3D::Scene* scene,
 {
 	Urho3D::ResourceCache* cache = scene->GetSubsystem<Urho3D::ResourceCache>();
 
-	node = scene->CreateChild("Sun");
-	Urho3D::BillboardSet* billboard
-	    = node->CreateComponent<Urho3D::BillboardSet>();
+	node           = scene->CreateChild("Sun");
+	auto billboard = node->CreateComponent<Urho3D::BillboardSet>();
 	billboard->SetNumBillboards(1);
 	billboard->SetSorted(true);
 
 	auto mat = new Urho3D::Material(scene->GetContext());
-	Urho3D::Texture2D* tex
-	    = cache->GetResource<Urho3D::Texture2D>("Textures/star.png");
+	auto tex = cache->GetResource<Urho3D::Texture2D>("Textures/star.png");
 	mat->SetTexture(Urho3D::TU_DIFFUSE, tex);
 	mat->SetNumTechniques(1);
 	mat->SetTechnique(0, cache->GetResource<Urho3D::Technique>(

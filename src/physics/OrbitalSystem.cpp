@@ -29,7 +29,7 @@ void OrbitalSystem::createChild(
     CelestialBody::Parameters const& physicalParameters,
     std::string const& parent)
 {
-	if(parent != "")
+	if(!parent.empty())
 	{
 		bodies[name] = bodies[parent]->createChild(orbitalParameters,
 		                                           physicalParameters);

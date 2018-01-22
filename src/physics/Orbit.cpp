@@ -79,7 +79,7 @@ double Orbit::getMeanAnomalyAtUT(UniversalTime uT) const
 	// several loops are done for performance (we don't want one loop which
 	// loops millions of times)
 	UniversalTime uT2 = fmod(uT, period);
-	double equivUT    = uT2.convert_to<double>();
+	auto equivUT    = uT2.convert_to<double>();
 
 	double smaCubed = parameters.semiMajorAxis * parameters.semiMajorAxis
 	                  * parameters.semiMajorAxis;
