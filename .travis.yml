@@ -22,7 +22,7 @@ script:
     - cd ..
     - mkdir -p build
     - cd build/
-    - cmake .. -DURHO3D_LIBRARIES=$URHO3D_LIBRARIES -DURHO3D_INCLUDE_DIR=$URHO3D_INCLUDE_DIR
+    - cmake .. -DURHO3D_LIBRARIES=$URHO3D_LIBRARIES -DURHO3D_INCLUDE_DIR=$URHO3D_INCLUDE_DIRS
     - make -j 4 prograde prograde_test
     - ./prograde_test
     - make clang-format

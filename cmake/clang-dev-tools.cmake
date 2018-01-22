@@ -26,13 +26,13 @@ else()
         message("clang-format-3.8 executable not found")
 endif()
 
-find_package(ClangTidy5.0)
+find_package(ClangTidy)
 
 if(CLANG_FORMAT_FOUND)
-	message("clang-tidy-5.0 executable: ${CLANG_TIDY_EXECUTABLE}")
-		message("clang-tidy-5.0 version: ${CLANG_TIDY_VERSION}")
+	message("clang-tidy executable: ${CLANG_TIDY_EXECUTABLE}")
+		message("clang-tidy version: ${CLANG_TIDY_VERSION}")
 else()
-        message("clang-tidy-5.0 executable not found")
+        message("clang-tidy executable not found")
 endif()
 
 # Get all project files
