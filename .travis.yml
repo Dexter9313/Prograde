@@ -8,8 +8,7 @@ addons:
             - libboost1.55-dev
             - clang-3.8
             - clang-format-3.8
-              clang-5.0
-            - clang-tidy-5.0
+            - clang-tidy-3.8
             - doxygen
 
 script:
