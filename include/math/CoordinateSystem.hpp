@@ -51,7 +51,7 @@ class CoordinateSystem
 	 * Basis vector are [1, 0, 0], [0, 1, 0] and [0, 0, 1] and origin is [0, 0,
 	 * 0].
 	 */
-	CoordinateSystem();
+	CoordinateSystem() = default;
 
 	/*! Default copy constructor
 	 *

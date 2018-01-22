@@ -27,8 +27,8 @@ Camera::Camera(Urho3D::Context* context, Urho3D::Scene* scene)
     , mouseEventHandled(false)
     , target(nullptr)
 {
-	camNode             = scene->CreateChild("Camera");
-	Urho3D::Camera* cam = camNode->CreateComponent<Urho3D::Camera>();
+	camNode  = scene->CreateChild("Camera");
+	auto cam = camNode->CreateComponent<Urho3D::Camera>();
 	(void) cam;
 	camNode->SetPosition(Urho3D::Vector3(0, 0, 0));
 	camNode->LookAt(Urho3D::Vector3(1, 0, 0), Urho3D::Vector3(0, 0, 1));

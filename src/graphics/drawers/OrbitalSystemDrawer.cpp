@@ -22,7 +22,7 @@ OrbitalSystemDrawer::OrbitalSystemDrawer(Urho3D::Scene* scene,
     : Drawer(scene)
     , drawnSystem(drawnSystem)
 {
-	Urho3D::ResourceCache* cache = scene->GetSubsystem<Urho3D::ResourceCache>();
+	auto cache = scene->GetSubsystem<Urho3D::ResourceCache>();
 
 	node           = scene->CreateChild("Sun");
 	auto billboard = node->CreateComponent<Urho3D::BillboardSet>();

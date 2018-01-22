@@ -18,11 +18,6 @@
 
 #include "../../include/math/CoordinateSystem.hpp"
 
-CoordinateSystem::CoordinateSystem()
-    : transform()
-{
-}
-
 CoordinateSystem::CoordinateSystem(Vector3 const& x0, Vector3 const& x1,
                                    Vector3 const& x2, Vector3 const& origin)
 {

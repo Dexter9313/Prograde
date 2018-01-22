@@ -1,10 +1,11 @@
 ---
-Checks:          "cert-dcl03-c, \
+Checks:          "-*, \
+    cert-dcl03-c, \
     cert-dcl50-cpp, \
     cert-dcl54-cpp, \
     cert-dcl59-cpp, \
     cert-err52-cpp, \
-    cert-err58-cpp, \
+    #cert-err58-cpp, \ # Google Test fails this and it is not a threat for us
     cert-err60-cpp, \
     cert-err61-cpp, \
     cert-fio38-c, \
@@ -40,11 +41,11 @@ Checks:          "cert-dcl03-c, \
     clang-analyzer-alpha.unix.cstring.BufferOverlap, \
     clang-analyzer-alpha.unix.cstring.NotNullTerminated, \
     clang-analyzer-alpha.unix.cstring.OutOfBounds, \
-    clang-analyzer-core.CallAndMessage, \
+    #clang-analyzer-core.CallAndMessage, \ # Urho3D's Hashtable makes it unusable
     clang-analyzer-core.DivideZero, \
     clang-analyzer-core.DynamicTypePropagation, \
     clang-analyzer-core.NonNullParamChecker, \
-    clang-analyzer-core.NullDereference, \
+    #clang-analyzer-core.NullDereference, \ # Urho3D's Hashtable makes it unusable
     clang-analyzer-core.StackAddressEscape, \
     clang-analyzer-core.UndefinedBinaryOperatorResult, \
     clang-analyzer-core.VLASize, \
