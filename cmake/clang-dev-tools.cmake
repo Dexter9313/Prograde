@@ -26,13 +26,13 @@ else()
         message("clang-format-3.8 executable not found")
 endif()
 
-find_package(ClangTidy3.8)
+find_package(ClangTidy5.0)
 
 if(CLANG_FORMAT_FOUND)
-	message("clang-tidy-3.8 executable: ${CLANG_TIDY_EXECUTABLE}")
-		message("clang-tidy-3.8 version: ${CLANG_TIDY_VERSION}")
+	message("clang-tidy-5.0 executable: ${CLANG_TIDY_EXECUTABLE}")
+		message("clang-tidy-5.0 version: ${CLANG_TIDY_VERSION}")
 else()
-        message("clang-tidy-3.8 executable not found")
+        message("clang-tidy-5.0 executable not found")
 endif()
 
 # Get all project files
@@ -48,7 +48,7 @@ add_custom_target(
 )
 
 set(SYSINC "")
-foreach(INC ${SYSTEM_INCLUDES})
+foreach(INC ${GOOGLE_TEST_INCLUDE_DIRS} ${URHO3D_INCLUDE_DIR})
 	list(APPEND SYSINC "-isystem"  "${INC}" "")
 endforeach(INC)
 

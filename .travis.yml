@@ -8,7 +8,8 @@ addons:
             - libboost1.55-dev
             - clang-3.8
             - clang-format-3.8
-            #- clang-tidy-3.8
+              clang-5.0
+            - clang-tidy-5.0
             - doxygen
 
 script:
@@ -18,7 +19,8 @@ script:
     - make -j 4 prograde prograde_test
     - ./prograde_test
     - make clang-format
-    #- make clang-tidy
+    - echo
+    - if [[ "$CXX" == "g++" ]] : then make clang-tidy; fi
     - make doc
     - mkdir prograde-$TRAVIS_OS_NAME-x86-64-$CXX/
     - mv prograde prograde-$TRAVIS_OS_NAME-x86-64-$CXX/
