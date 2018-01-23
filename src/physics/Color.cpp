@@ -24,7 +24,7 @@ Color::Color()
 }
 
 Color::Color(unsigned int r, unsigned int g, unsigned int b)
-    : Color(0, r, g, b)
+    : Color(255, r, g, b)
 {
 }
 

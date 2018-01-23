@@ -19,16 +19,66 @@
 #ifndef COLOR_HPP
 #define COLOR_HPP
 
+/*! \ingroup phys
+ * An
+ * [ARGB-represented](https://en.wikipedia.org/wiki/RGBA_color_space#ARGB_(word-order))
+ * color.
+ *
+ * See \ref phys group description for conventions and notations.
+ */
 class Color
 {
   public:
+	/*! Default constructor
+	 *
+	 * Constructs opaque black.
+	 */
 	Color();
+	/*! RGB constructor
+	 *
+	 * Constructs an opaque color from three RGB values.
+	 *
+	 * \param r Red channel with value from 0 (no contribution) to 255 (max
+	 * contribution).
+	 * \param g Green channel with value from 0 (no contribution) to 255 (max
+	 * contribution).
+	 * \param b Blue channel with value from 0 (no contribution) to 255 (max
+	 * contribution).
+	 */
 	Color(unsigned int r, unsigned int g, unsigned int b);
-	Color(unsigned int alpha, unsigned int r, unsigned int g, unsigned int b);
 
+	/*! RGB constructor
+	 *
+	 * Constructs a color from four ARGB values.
+	 *
+	 * \param alpha Alpha channel with value from 0 (no contribution) to 255
+	 * (max contribution).
+	 *
+	 * \param r Red channel with value from 0 (no contribution) to 255 (max
+	 * contribution).
+	 * \param g Green channel with value from 0 (no contribution) to 255 (max
+	 * contribution).
+	 * \param b Blue channel with value from 0 (no contribution) to 255 (max
+	 * contribution).
+	 */
+	Color(unsigned int alpha, unsigned int r, unsigned int g, unsigned int b);
+	
+	/*!
+	 * Alpha channel with value from 0 (no contribution) to 255
+	 * (max contribution).
+	 */
 	unsigned int alpha;
+	 /*! Red channel with value from 0 (no contribution) to 255 (max
+	 * contribution).
+	 */
 	unsigned int r;
+	 /*! Green channel with value from 0 (no contribution) to 255 (max
+	 * contribution).
+	 */
 	unsigned int g;
+	 /*! Blue channel with value from 0 (no contribution) to 255 (max
+	 * contribution).
+	 */
 	unsigned int b;
 };
 

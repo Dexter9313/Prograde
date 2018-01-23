@@ -35,7 +35,6 @@ void SimulationTime::resetAtEpoch()
 	currentFPS = 0.f;
 }
 
-#include <iostream>
 void SimulationTime::update()
 {
 	stdclock::time_point now(stdclock::now());

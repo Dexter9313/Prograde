@@ -66,7 +66,7 @@ class EccentricAnomalySolver
 	 * method](https://en.wikipedia.org/wiki/Cubic_function#Cardano%27s_method).
 	 *
 	 * \param meanAnomaly is actually sqrt(mu / p^3) * (t-T)  as defined in
-	 * source, see #Orbit::getMeanAnomalyAtUT for more details
+	 * source, see \ref Orbit::getMeanAnomalyAtUT for more details
 	 */
 	static double solveForParabolicOrbit(double meanAnomaly);
 

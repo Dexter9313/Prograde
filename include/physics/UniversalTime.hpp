@@ -29,8 +29,11 @@
 #include <boost/multiprecision/float128.hpp>
 
 // TODO see if enforce strong typing
+
+/*! Defines a type wide enough to hold big time lengths with
+ * enough precision.
+ */
 typedef boost::multiprecision::float128 UniversalTime;
-// typedef double UniversalTime;
 #else
 #pragma message("Using cpp_dec_float_50")
 #include <boost/multiprecision/cpp_dec_float.hpp>

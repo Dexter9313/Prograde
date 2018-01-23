@@ -17,7 +17,6 @@
 */
 #include "../../../include/physics/default-orbitalsystems/SolarSystem.hpp"
 
-// float sunMass = 4.75177f;
 float sunMass   = 1.9891f * 1e30;
 float sunRadius = 696342.f * 1000;
 
@@ -84,8 +83,7 @@ void SolarSystem::createPlanets()
 	physicalParams.color                 = Color(204, 102, 51);
 	physicalParams.mass                  = 6.4171 * 1e23;
 	createChild("Mars", orbitalParams, physicalParams);
-	/*
-	*/
+
 	// jupiter
 	orbitalParams.inclination            = constant::pi * 1.303 / 180.f;
 	orbitalParams.ascendingNodeLongitude = constant::pi * 100.464 / 180.f;
@@ -130,7 +128,7 @@ void SolarSystem::createPlanets()
 	physicalParams.color                 = Color(80, 51, 255);
 	createChild("Neptune", orbitalParams, physicalParams);
 
-	// pluton
+	// pluto
 	orbitalParams.inclination            = constant::pi * 17.1405 / 180.f;
 	orbitalParams.ascendingNodeLongitude = constant::pi * 110.299 / 180.f;
 	orbitalParams.periapsisArgument      = constant::pi * 113.834 / 180.f;

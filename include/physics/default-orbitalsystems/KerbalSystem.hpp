@@ -23,9 +23,27 @@
 
 #include "../OrbitalSystem.hpp"
 
+/*! \ingroup phys
+ * [The Kerbol System](https://wiki.kerbalspaceprogram.com/wiki/Kerbol_System)
+ * from [Kerbal Space Program](https://kerbalspaceprogram.com/).
+ *
+ * This class is doomed to be replaced by a config file. Orbital Systems still
+ * don't support loading/saving to/from files so for now a few of them have
+ * been hardcoded (see also \ref SolarSystem).
+ *
+ * This system is implemented to show that Prograde isn't necessarly tied to a 
+ * real star system and can simulate a wide variety of systems. It is also a 
+ * tribute to KSP.
+ *
+ * See \ref phys group description for conventions and notations.
+ */
 class KerbalSystem : public OrbitalSystem
 {
   public:
+	/*! Default Constructor
+	 *
+	 * Populates itself with some of the Kerbol System data.
+	 */
 	KerbalSystem();
 
   private:
@@ -35,9 +53,9 @@ class KerbalSystem : public OrbitalSystem
 	void createDunaSubSystem();
 	void createJoolSubSystem();
 
-	float distanceMultiplier = 1.f;  // 0.0000002f;//40.f / 15000000.f;
-	float radiusMultiplier = 1000.f; // 0.002f;
-	float massMultiplier   = 1.f;    // 1.f / 1e17;
+	float distanceMultiplier = 1.f;
+	float radiusMultiplier = 1000.f;
+	float massMultiplier   = 1.f;
 };
 
 #endif // KERBALSYSTEM_HPP

@@ -23,9 +23,26 @@
 
 #include "../OrbitalSystem.hpp"
 
+/*! \ingroup phys
+ * [The orbital system we live in](https://en.wikipedia.org/wiki/Solar_System).
+ * (As of 2018 anyway... ;) )
+ *
+ * This class is doomed to be replaced by a config file. Orbital Systems still
+ * don't support loading/saving to/from files so for now a few of them have
+ * been hardcoded (see also \ref KerbalSystem).
+ *
+ * For now, only the eight major planets, Pluto and a few moons
+ * (the Moon, Phobos and Deimos) have been included.
+ *
+ * See \ref phys group description for conventions and notations.
+ */
 class SolarSystem : public OrbitalSystem
 {
   public:
+	/*! Default Constructor
+	 *
+	 * Populates itself with some of the real Solar System data.
+	 */
 	SolarSystem();
 
   private:
@@ -38,11 +55,8 @@ class SolarSystem : public OrbitalSystem
 	void createNeptuneSubSystem();
 	void createPlutoSubSystem();
 
-	// to be corrected to true scale
-	// float au = 20.f;
-	// float radiusMultiplier = 0.0001f;
-	double au              = 149597870700;
-	float km = 1000;
+	double au = 149597870700;
+	float km  = 1000;
 };
 
 #endif // SOLARSYSTEM_HPP

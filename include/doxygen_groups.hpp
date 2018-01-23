@@ -106,3 +106,45 @@
  *  Any other library usage within this module will have to be discussed in an
  * issue and properly documented if accepted.
  */
+
+/*! \defgroup phys Physics
+ * Contains everything related to physics.
+ *
+ * This includes orbital mechanics,
+ * time management, physical objects definition and behavior, etc... In
+ * short, it includes most of the things that are not directly related
+ * to display and that describe what Prograde actually simulates.
+ *
+ *  # Conventions
+ *
+ *  - If not explicit, color values are given in
+ * [ARGB](https://en.wikipedia.org/wiki/RGBA_color_space#ARGB_(word-order))
+ * format if 4-dimensional or RGB if 3-dimensional with integer values
+ * from 0 (no contribution) to 255 (max contribution).
+ *
+ *  - Whenever time values are given, they are given in seconds. If it's
+ * supposed to be a date, then 0 means "0 seconds since epoch". Epoch time may
+ * vary depending on the planetary system or simulation parameters.
+ *
+ * See also \ref math conventions for additional conventions.
+ *
+ *  # Notations
+ *
+ * See also \ref math notations for additional notations.
+ *
+ *  # Authorized libraries
+ *
+ *  To better control what uses which library, each module has a set of
+ * authorized libraries. This is desired mainly in case any library has to be
+ * changed or updated. Hopefully in these cases, the least amount of code will
+ * have to be rewritten.
+ *
+ *  The C++ Standard Library is always considered authorized.
+ *
+ * For this module, these libraries are :
+ *  - Bullet (shipped with Urho3D)
+ *
+ *  Any other library usage within this module will have to be discussed in an
+ * issue and properly documented if accepted.
+ *
+ */
