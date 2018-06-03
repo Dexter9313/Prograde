@@ -30,12 +30,12 @@ Gui::Gui(Urho3D::Context* context)
 	auto button = new Urho3D::Button(context_);
 	auto text   = new Urho3D::Text(context_);
 	button->SetName("LAUNCH");
-	button->SetSize(128, 128);
-	button->SetPosition((graphics->GetWidth() - button->GetWidth()) / 2, 200);
+	button->SetSize(128, 56);
+	button->SetPosition((graphics->GetWidth() - button->GetWidth()) / 3, 500);
 	button->SetStyleAuto();
 	text->SetText("Launch");
-	text->SetSize(128, 128);
-	text->SetPosition((graphics->GetWidth() - button->GetWidth()) / 2, 200);
+	text->SetSize(128, 56);
+	text->SetPosition((graphics->GetWidth() - 10) / 3, 515);
 	text->SetStyleAuto();
 	uiRoot->AddChild(button);
 	uiRoot->AddChild(text);
@@ -43,12 +43,13 @@ Gui::Gui(Urho3D::Context* context)
 	button = new Urho3D::Button(GetContext());
 	text   = new Urho3D::Text(context_);
 	button->SetName("QUIT");
-	button->SetSize(128, 128);
-	button->SetPosition((graphics->GetWidth() - button->GetWidth()) / 2, 400);
+	button->SetSize(128, 56);
+	button->SetPosition((graphics->GetWidth() - button->GetWidth()) * 2 / 3,
+	                    500);
 	button->SetStyleAuto(style);
 	text->SetText("Quit");
-	text->SetSize(128, 128);
-	text->SetPosition((graphics->GetWidth() - button->GetWidth()) / 2, 400);
+	text->SetSize(128, 56);
+	text->SetPosition((graphics->GetWidth() - 52) * 2 / 3, 515);
 	text->SetStyleAuto();
 	uiRoot->AddChild(button);
 	uiRoot->AddChild(text);
