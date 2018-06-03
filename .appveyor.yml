@@ -1,3 +1,5 @@
+image:
+- Visual Studio 2013
 build:
     verbosity: detailed
 install:
