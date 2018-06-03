@@ -27,8 +27,22 @@ Gui::Gui(Urho3D::Context* context)
 	auto style    = cache->GetResource<Urho3D::XMLFile>("UI/DefaultStyle.xml");
 	uiRoot->SetDefaultStyle(style);
 
-	auto button = new Urho3D::Button(context_);
-	auto text   = new Urho3D::Text(context_);
+	auto button   = new Urho3D::Button(context_);
+	auto text     = new Urho3D::Text(context_);
+	auto checkbox = new Urho3D::CheckBox(context_);
+
+	checkbox->SetName("FULLSCREEN");
+	checkbox->SetSize(30, 30);
+	checkbox->SetPosition(
+	    (graphics->GetWidth() - checkbox->GetWidth()) / 2 - 40, 300);
+	checkbox->SetStyleAuto();
+	text->SetText("Fullscreen");
+	text->SetPosition((graphics->GetWidth() - checkbox->GetWidth()) / 2, 300);
+	text->SetStyleAuto();
+	uiRoot->AddChild(checkbox);
+	uiRoot->AddChild(text);
+
+	text = new Urho3D::Text(context_);
 	button->SetName("LAUNCH");
 	button->SetSize(128, 56);
 	button->SetPosition((graphics->GetWidth() - button->GetWidth()) / 3, 500);

@@ -25,6 +25,7 @@ MainWindow::MainWindow(Urho3D::Context* context,
     , orbitalSystem(initFromLauncher.orbitalSystem)
     , clock(initFromLauncher.utStart)
 {
+	engineParameters_["Fullscreen"] = initFromLauncher.fullscreen;
 }
 
 void MainWindow::Setup()
@@ -35,7 +36,6 @@ void MainWindow::Setup()
 	    = GetSubsystem<Urho3D::FileSystem>()->GetAppPreferencesDir("urho3d",
 	                                                               "logs")
 	      + GetTypeName() + ".log";
-	engineParameters_["Fullscreen"]   = true;
 	engineParameters_["Borderless"]   = false;
 	engineParameters_["Headless"]     = false;
 	engineParameters_["WindowWidth"]  = 1920;

@@ -63,7 +63,8 @@ void LauncherWindow::Start()
 	SubscribeToEvent(Urho3D::E_UIMOUSECLICK,
 	                 URHO3D_HANDLER(LauncherWindow, onEvent));
 
-	returned.launch = false;
+	returned.launch     = false;
+	returned.fullscreen = false;
 	// returned.utStart = 16*365.25*24*3600 - 71*24*3600;
 	returned.utStart = 1443394800 - 946728000;
 	// limit before we stop representing milliseconds (we have plenty of time !)

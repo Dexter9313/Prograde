@@ -37,6 +37,7 @@ class LauncherWindow : public Urho3D::Application
 	struct LauncherReturned
 	{
 		bool launch;
+		bool fullscreen;
 		UniversalTime utStart;
 		OrbitalSystem* orbitalSystem;
 	};
@@ -51,11 +52,13 @@ class LauncherWindow : public Urho3D::Application
 	{
 		if(eventType == Urho3D::E_UIMOUSECLICK)
 		{
-			Urho3D::String name
-			    = ((Urho3D::UIElement*)
-			           eventData[Urho3D::UIMouseClick::P_ELEMENT]
-			               .GetPtr())
-			          ->GetName();
+			Urho3D::UIElement* ptr
+			    = (Urho3D::UIElement*)
+			          eventData[Urho3D::UIMouseClick::P_ELEMENT]
+			              .GetPtr();
+			if(!ptr)
+				return;
+			Urho3D::String name = ptr->GetName();
 			if(name == "LAUNCH")
 			{
 				returned.launch = true;
@@ -65,6 +68,10 @@ class LauncherWindow : public Urho3D::Application
 			{
 				returned.launch = false;
 				engine_->Exit();
+			}
+			else if(name == "FULLSCREEN")
+			{
+				returned.fullscreen = !returned.fullscreen;
 			}
 		}
 	}
