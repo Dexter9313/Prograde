@@ -57,12 +57,12 @@ else()
 	find_package(OpenGL REQUIRED)
 endif()
 
-find_package(Qt5 COMPONENTS Core Test REQUIRED)
-message(STATUS "Qt5 include : ${Qt5_DIR}")
+find_package(Qt5Test REQUIRED)
+message(STATUS "Qt5 include : ${Qt5Test_INCLUDE_DIRS}")
 message(STATUS "Qt5 libs : ${Qt5Test_LIBRARIES}")
 
 #TODO put -fext-numeric-literals -lquadmath at right place
-set(EXTERNAL_LIBS_INCLUDE_DIRS ${Boost_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIR} ${Qt5_DIR})
+set(EXTERNAL_LIBS_INCLUDE_DIRS ${Boost_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIR} ${Qt5Test_INCLUDE_DIRS})
 
 
 #FILES/DIRECTORIES
