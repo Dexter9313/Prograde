@@ -27,9 +27,11 @@ environment:
 
 before_build:
     - set MINGW_BIN_DIR=C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
-    - set Path=%MINGW_BIN_DIR%;%Path%
+    - set QTPATH=C:\Qt\5.11\mingw53_32
+    - set Path=%MINGW_BIN_DIR%
     - cd C:\projects\prograde
 build_script:
+    - set PATH=%QTPATH%;%QTPATH%/bin;%PATH%
     - mkdir build
     - cd build
     - cmake .. -G "MinGW Makefiles" -DBOOST_ROOT="C:\Libraries\boost_1_67_0" -DURHO3D_LIBRARIES=%URHO3D_LIBRARIES% -DURHO3D_INCLUDE_DIR=%URHO3D_INCLUDE_DIR% -DCMAKE_PREFIX_PATH="C:\Qt\5.11.2\msvc2017_64"
