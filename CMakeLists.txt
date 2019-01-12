@@ -73,10 +73,6 @@ list(APPEND TEST_FILES ${SRC_FILES})
 
 set(EXT_PROJECT_DIR ${PROJECT_SOURCE_DIR}/ext)
 
-	#GMOCK
-	add_subdirectory(${EXT_PROJECT_DIR}/google-test)
-	add_definitions(${MSVC_COMPILER_DEFS})
-
 	#URHO3D
 	if( (NOT DEFINED URHO3D_LIBRARIES) OR (NOT DEFINED URHO3D_INCLUDE_DIR) )
 		add_subdirectory(${EXT_PROJECT_DIR}/urho3d)
@@ -90,7 +86,7 @@ set(EXT_PROJECT_DIR ${PROJECT_SOURCE_DIR}/ext)
 
 #INCLUDE
 
-set(SYSTEM_INCLUDES ${EXTERNAL_LIBS_INCLUDE_DIRS} ${GOOGLE_TEST_INCLUDE_DIRS} ${URHO3D_INCLUDE_DIR})
+set(SYSTEM_INCLUDES ${EXTERNAL_LIBS_INCLUDE_DIRS} ${URHO3D_INCLUDE_DIR})
 include_directories(${COMMON_INCLUDES} SYSTEM ${SYSTEM_INCLUDES})
 
 #LINKING SETUP
@@ -101,23 +97,10 @@ endif()
 
 #EXECUTABLE 1 : FreeOrbiter Test
 add_executable(${PROJECT_TEST_NAME} ${TEST_FILES})
-add_dependencies(${PROJECT_TEST_NAME} google-test)
 if(BUILT_URHO3D)
 	add_dependencies(${PROJECT_TEST_NAME} urho3d)
 endif(BUILT_URHO3D)
 
-if(NOT WIN32)
-    target_link_libraries(${PROJECT_TEST_NAME} ${GOOGLE_TEST_LIBRARIES})
-else()
-    target_link_libraries(${PROJECT_TEST_NAME}
-    debug ${GMOCK_LIBS_DIR}/DebugLibs/${CMAKE_FIND_LIBRARY_PREFIXES}gmock${CMAKE_FIND_LIBRARY_SUFFIXES}
-    optimized ${GMOCK_LIBS_DIR}/ReleaseLibs/${CMAKE_FIND_LIBRARY_PREFIXES}gmock${CMAKE_FIND_LIBRARY_SUFFIXES}
-       )
-    target_link_libraries(${PROJECT_TEST_NAME}
-	    debug ${GMOCK_LIBS_DIR}/DebugLibs/${CMAKE_FIND_LIBRARY_PREFIXES}gmock_main${CMAKE_FIND_LIBRARY_SUFFIXES}
-	    optimized ${GMOCK_LIBS_DIR}/ReleaseLibs/${CMAKE_FIND_LIBRARY_PREFIXES}gmock_main${CMAKE_FIND_LIBRARY_SUFFIXES}
-	)
-endif()
 #TODO put -fext-numeric-literals -lquadmath at right place
 target_link_libraries(${PROJECT_TEST_NAME} ${LD_LIBS})
 

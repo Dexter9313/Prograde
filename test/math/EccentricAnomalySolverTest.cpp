@@ -16,11 +16,11 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-#include <gtest/gtest.h>
+//#include <gtest/gtest.h>
 
 #include "math/EccentricAnomalySolver.hpp"
 #include "math/constants.hpp"
-
+/*
 TEST(EccentricAnomalySolverTest, EllipticZeroEccentricityEqualsSameAngle)
 {
 	// mA = meanAnomaly
@@ -34,4 +34,4 @@ TEST(EccentricAnomalySolverTest, EllipticZeroEccentricityEqualsSameAngle)
 	                EccentricAnomalySolver::solveForEllipticOrbit(mA3, 0.f));
 	ASSERT_FLOAT_EQ(mA4,
 	                EccentricAnomalySolver::solveForEllipticOrbit(mA4, 0.f));
-}
+}*/

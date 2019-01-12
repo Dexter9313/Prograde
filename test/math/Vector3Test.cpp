@@ -17,9 +17,9 @@
 */
 
 #include "math/Vector3.hpp"
-#include <gtest/gtest.h>
+//#include <gtest/gtest.h>
 
-TEST(Vector3Test, DefaultVector3IsNull)
+/*TEST(Vector3Test, DefaultVector3IsNull)
 {
 	Vector3 defaultVec;
 	ASSERT_TRUE(defaultVec[0] == 0 && defaultVec[1] == 0 && defaultVec[2] == 0);
@@ -93,4 +93,4 @@ TEST(Vector3Test, UnitFormIsLengthOne)
 
 	Vector3 testedVec(x, y, z);
 	ASSERT_FLOAT_EQ(testedVec.getUnitForm().length(), 1.f);
-}
+}*/
