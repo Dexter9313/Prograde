@@ -28,7 +28,7 @@ script:
     - ./prograde_test
     - make clang-format
     - echo
-    - if [[ "$CXX" == "g++" ]] ; then make clang-tidy; fi
+      #- if [[ "$CXX" == "g++" ]] ; then make clang-tidy; fi
     - make doc
     - mkdir prograde-$TRAVIS_OS_NAME-x86-64-$CXX/
     - mv prograde prograde-$TRAVIS_OS_NAME-x86-64-$CXX/
