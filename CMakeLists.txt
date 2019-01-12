@@ -44,6 +44,7 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -g -Werror -fext-numeric-literals")
 endif()
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC") # Add this for Qt
 
 #DEPENDENCIES
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake/modules)
@@ -55,13 +56,20 @@ if(DEFINED USE_DIRECTX AND USE_DIRECTX)
 else()
 	find_package(OpenGL REQUIRED)
 endif()
+
+find_package(Qt5 COMPONENTS Core Test REQUIRED)
+message(STATUS "Qt5 include : ${Qt5_DIR}")
+message(STATUS "Qt5 libs : ${Qt5Test_LIBRARIES}")
+
 #TODO put -fext-numeric-literals -lquadmath at right place
-set(EXTERNAL_LIBS_INCLUDE_DIRS ${Boost_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIR})
+set(EXTERNAL_LIBS_INCLUDE_DIRS ${Boost_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIR} ${Qt5_DIR})
 
 
 #FILES/DIRECTORIES
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
+
+file(GLOB_RECURSE HPP_FILES ${PROJECT_SOURCE_DIR}/test/*.hpp)
 
 file(GLOB_RECURSE MAIN_SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
@@ -90,13 +98,16 @@ set(SYSTEM_INCLUDES ${EXTERNAL_LIBS_INCLUDE_DIRS} ${URHO3D_INCLUDE_DIR})
 include_directories(${COMMON_INCLUDES} SYSTEM ${SYSTEM_INCLUDES})
 
 #LINKING SETUP
-set(LD_LIBS ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} ${OPENGL_LIBRARIES} -lquadmath)
+set(LD_LIBS ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} ${OPENGL_LIBRARIES} -lquadmath ${Qt5Test_LIBRARIES})
 if(NOT WIN32)
 	set(LD_LIBS ${LD_LIBS} -ldl)
 endif()
 
+#RUN MOC (FOR QT5)
+qt5_wrap_cpp(MOC_FILES ${HPP_FILES})
+
 #EXECUTABLE 1 : FreeOrbiter Test
-add_executable(${PROJECT_TEST_NAME} ${TEST_FILES})
+add_executable(${PROJECT_TEST_NAME} ${TEST_FILES} ${MOC_FILES})
 if(BUILT_URHO3D)
 	add_dependencies(${PROJECT_TEST_NAME} urho3d)
 endif(BUILT_URHO3D)
