@@ -59,7 +59,7 @@ endif()
 
 find_package(Qt5Test REQUIRED)
 message(STATUS "Qt5 include : ${Qt5Test_INCLUDE_DIRS}")
-message(STATUS "Qt5 libs : ${Qt5Test_LIBRARIES}")
+message(STATUS "Qt5 libs : ${Qt5Core_LIBRARIES} ${Qt5Test_LIBRARIES}")
 
 #TODO put -fext-numeric-literals -lquadmath at right place
 set(EXTERNAL_LIBS_INCLUDE_DIRS ${Boost_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIR} ${Qt5Test_INCLUDE_DIRS})
@@ -98,7 +98,7 @@ set(SYSTEM_INCLUDES ${EXTERNAL_LIBS_INCLUDE_DIRS} ${URHO3D_INCLUDE_DIR})
 include_directories(${COMMON_INCLUDES} SYSTEM ${SYSTEM_INCLUDES})
 
 #LINKING SETUP
-set(LD_LIBS ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} ${OPENGL_LIBRARIES} -lquadmath ${Qt5Test_LIBRARIES})
+set(LD_LIBS ${URHO3D_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES} ${OPENGL_LIBRARIES} -lquadmath ${Qt5Core_LIBRARIES} ${Qt5Test_LIBRARIES})
 if(NOT WIN32)
 	set(LD_LIBS ${LD_LIBS} -ldl)
 endif()
