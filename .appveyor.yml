@@ -28,7 +28,7 @@ environment:
 before_build:
     - set MINGW_BIN_DIR=C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
     - set QTPATH=C:\Qt\5.11\mingw53_32
-    - set Path=%MINGW_BIN_DIR%
+    - set Path=%MINGW_BIN_DIR%;%PATH%
     - cd C:\projects\prograde
 build_script:
     - set PATH=%QTPATH%;%QTPATH%/bin;%PATH%
