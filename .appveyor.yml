@@ -32,7 +32,7 @@ before_build:
 build_script:
     - mkdir build
     - cd build
-    - cmake .. -G "MinGW Makefiles" -DBOOST_ROOT="C:\Libraries\boost" -DURHO3D_LIBRARIES=%URHO3D_LIBRARIES% -DURHO3D_INCLUDE_DIR=%URHO3D_INCLUDE_DIR%
+    - cmake .. -G "MinGW Makefiles" -DBOOST_ROOT="C:\Libraries\boost" -DURHO3D_LIBRARIES=%URHO3D_LIBRARIES% -DURHO3D_INCLUDE_DIR=%URHO3D_INCLUDE_DIR% -DCMAKE_PREFIX_PATH="C:\Qt\5.9"
     - cmake --build . --target prograde
     #- cmake --build . --target prograde_test
     - set RELEASE_DIR_NAME=prograde%tag_name%windows-x86.64-mingw
