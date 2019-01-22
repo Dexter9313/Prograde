@@ -1,7 +1,12 @@
 image:
-- Visual Studio 2017
+- Visual Studio 2015
 build:
     verbosity: detailed
+environment:
+  matrix:
+    - QTPATH: 'C:\Qt\5.11.2\msvc2015_64'
+      GENERATOR: '"Visual Studio 14 2015 Win64"'
+
 install:
     ############################################################################
     # All external dependencies are installed in C:\projects\deps
@@ -26,28 +31,29 @@ environment:
     tag_name: "-0.1-"
 
 before_build:
-    - set MINGW_BIN_DIR=C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
-    - set QTPATH=C:\Qt\5.11\mingw53_32
-    - set Path=%MINGW_BIN_DIR%;%PATH%
+    - set BINDIR=%APPVEYOR_BUILD_FOLDER%\build\Release\
+    - set Path=%QTPATH%;%QTPATH%/bin;%PATH%
     - cd C:\projects\prograde
 build_script:
-    - set PATH=%QTPATH%;%QTPATH%/bin;%PATH%
     - mkdir build
     - cd build
-    - cmake .. -G "MinGW Makefiles" -DBOOST_ROOT="C:\Libraries\boost_1_67_0" -DURHO3D_LIBRARIES=%URHO3D_LIBRARIES% -DURHO3D_INCLUDE_DIR=%URHO3D_INCLUDE_DIR% -DCMAKE_PREFIX_PATH="C:\Qt\5.11.2\msvc2017_64"
-    - cmake --build . --target prograde
-    - cmake --build . --target prograde_test
-    - set RELEASE_DIR_NAME=prograde%tag_name%windows-x86.64-mingw
+    - - cmake .. -G %GENERATOR% -DBOOST_ROOT="C:\Libraries\boost_1_67_0" -DURHO3D_LIBRARIES=%URHO3D_LIBRARIES% -DURHO3D_INCLUDE_DIR=%URHO3D_INCLUDE_DIR% -DCMAKE_PREFIX_PATH="C:\Qt\5.11.2\msvc2017_64"
+    - cmake --build . --target prograde --config Release
+    - cmake --build . --target prograde_test --config Release
+    - set RELEASE_DIR_NAME=prograde%tag_name%windows-x86.64
     - set RELEASE_DIR=C:\projects\prograde\build\%RELEASE_DIR_NAME%
     - mkdir %RELEASE_DIR_NAME%
+    - cd %RELEASE_DIR_NAME%
+    - mkdir platforms
+    - cd ..
     - move prograde.exe %RELEASE_DIR%
     - move ../data %RELEASE_DIR%
     - cd %URHO3D_PATH%/bin
     - move Urho3D.dll %RELEASE_DIR%
-    - move %MINGW_BIN_DIR%\libgcc_s_seh-1.dll %RELEASE_DIR%
-    - move %MINGW_BIN_DIR%\libquadmath-0.dll %RELEASE_DIR%
-    - move %MINGW_BIN_DIR%\libwinpthread-1.dll %RELEASE_DIR%
-    - move %MINGW_BIN_DIR%\libstdc++-6.dll %RELEASE_DIR%
+    - copy %QTPATH%\bin\Qt5Core.dll %RELEASE_DIR%
+    - copy %QTPATH%\bin\Qt5Gui.dll %RELEASE_DIR%
+    - copy %QTPATH%\bin\Qt5Widgets.dll %RELEASE_DIR%
+    - copy %QTPATH%\plugins\platforms\qwindows.dll %RELEASE_DIR%\platforms
     - cd %RELEASE_DIR%
     - dir
     - cd ..
