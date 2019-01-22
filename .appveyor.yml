@@ -3,6 +3,9 @@ image:
 build:
     verbosity: detailed
 environment:
+  global:
+    artifact_name: C:\projects\prograde\build\prograde-$(APPVEYOR_REPO_TAG_NAME)-windows-x86.64-mingw.zip
+    tag_name: "-0.1-"
   matrix:
     - QTPATH: 'C:\Qt\5.11.2\msvc2015_64'
       GENERATOR: '"Visual Studio 14 2015 Win64"'
@@ -26,10 +29,6 @@ install:
 
     # CMake refuses to generate MinGW Makefiles if sh.exe is in the Path
     - ps: Get-Command sh.exe -All | Remove-Item
-environment:
-    artifact_name: C:\projects\prograde\build\prograde-$(APPVEYOR_REPO_TAG_NAME)-windows-x86.64-mingw.zip
-    tag_name: "-0.1-"
-
 before_build:
     - set BINDIR=%APPVEYOR_BUILD_FOLDER%\build\Release\
     - set Path=%QTPATH%;%QTPATH%/bin;%PATH%
