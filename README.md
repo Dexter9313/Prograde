@@ -5,3 +5,4 @@ An ambitious space flight simulator.
 
 ## Documentation
 Unfinished documentation about the source code can be read here : [Documentation](https://dexter9313.github.io/Prograde/).
+
