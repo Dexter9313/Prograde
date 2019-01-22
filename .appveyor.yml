@@ -36,7 +36,7 @@ before_build:
 build_script:
     - mkdir build
     - cd build
-    - - cmake .. -G %GENERATOR% -DBOOST_ROOT="C:\Libraries\boost_1_67_0" -DURHO3D_LIBRARIES=%URHO3D_LIBRARIES% -DURHO3D_INCLUDE_DIR=%URHO3D_INCLUDE_DIR% -DCMAKE_PREFIX_PATH="C:\Qt\5.11.2\msvc2017_64"
+    - cmake .. -G %GENERATOR% -DBOOST_ROOT="C:\Libraries\boost_1_67_0" -DURHO3D_LIBRARIES=%URHO3D_LIBRARIES% -DURHO3D_INCLUDE_DIR=%URHO3D_INCLUDE_DIR% -DCMAKE_PREFIX_PATH="C:\Qt\5.11.2\msvc2017_64"
     - cmake --build . --target prograde --config Release
     - cmake --build . --target prograde_test --config Release
     - set RELEASE_DIR_NAME=prograde%tag_name%windows-x86.64
